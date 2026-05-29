@@ -12,22 +12,22 @@ home = ["HTML", "RSS", "JSON"]
 [params]
 themeVariant = "workshop"
 editURL = ""
-description = "Bilingual Hugo documentation template with GitHub Pages deployment and authoring tooling."
-author = "thienlh@thienlu.com"
+description = "Hands-on workshop: Agentic AI for MarTech — build a multi-agent marketing platform with AWS AgentCore."
+author = "AWS BuildDay"
 showVisitedLinks = true
 disableBreadcrumb = false
 disableNextPrev = false
 
 [Languages]
 [Languages.en]
-title = "Hugo Documentation Template"
+title = "Agentic AI for MarTech"
 weight = 1
-languageName = "English"
+label = "English"
 
 [Languages.vi]
-title = "Mẫu Tài Liệu Hugo"
+title = "Agentic AI cho MarTech"
 weight = 2
-languageName = "Tiếng Việt"
+label = "Tiếng Việt"
 
 [markup]
 [markup.goldmark]

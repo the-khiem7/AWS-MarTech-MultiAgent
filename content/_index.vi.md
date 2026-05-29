@@ -1,26 +1,21 @@
 ---
-title: "Mẫu Tài Liệu Hugo"
-date: 2026-04-29
+title: "Agentic AI cho MarTech"
+date: 2026-05-29
 weight: 1
 chapter: false
 ---
 
-# Mẫu Tài Liệu Hugo
+# Agentic AI cho MarTech
 
-Sử dụng template này để khởi tạo một website tài liệu Hugo song ngữ, có triển khai GitHub Pages, quy ước tài nguyên theo page bundle, và devcontainer sẵn sàng cho quy trình biên soạn.
+Nền tảng quản lý chiến dịch marketing sử dụng AI, xây dựng trên AWS, cho phép marketer điều phối chiến dịch trên Databricks, CleverTap, và TalonOne thông qua hệ thống multi-agent thông minh.
 
-## Template Này Cung Cấp
+## Bạn Sẽ Học Được
 
-- Cấu trúc nội dung tiếng Anh và tiếng Việt
-- Triển khai bằng GitHub Pages Actions
-- Quy ước tài nguyên theo page bundle
-- Lớp tương thích cho nội dung cũ dùng `/images/...`
-- Devcontainer cho Hugo, sơ đồ, ảnh chụp màn hình, OCR, và tối ưu ảnh
+- Cách sử dụng **AWS AgentCore** để xây dựng, triển khai và quản lý AI agent ở quy mô lớn
+- Framework mã nguồn mở **Strands Agents** từ AWS để xây dựng ứng dụng multi-agent
+- Triển khai giao tiếp **Agent-to-Agent (A2A)** cho điều phối đa nền tảng
+- Triển khai workflow AI sẵn sàng production bằng **AWS CDK** infrastructure as code
 
-## Các Mục Ví Dụ
+## Các Phần Workshop
 
 {{% children description="true" /%}}
-
-## Định Hướng Biên Soạn
-
-Trang mới nên dùng page bundle và đường dẫn Markdown tương đối cho tài nguyên riêng của trang. Tài nguyên static dùng chung vẫn có thể được dùng khi phù hợp, nhưng nội dung mới nên tránh đường dẫn root-relative dạng `/images/...`.

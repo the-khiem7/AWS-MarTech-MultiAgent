@@ -1,26 +1,21 @@
 ---
-title: "Hugo Documentation Template"
-date: 2026-04-29
+title: "Agentic AI for MarTech"
+date: 2026-05-29
 weight: 1
 chapter: false
 ---
 
-# Hugo Documentation Template
+# Agentic AI for MarTech
 
-Use this template to start a bilingual Hugo documentation site with GitHub Pages deployment, page-bundled assets, and a ready-to-use authoring devcontainer.
+An AI-powered marketing campaign management platform built on AWS, enabling marketers to orchestrate campaigns across Databricks, CleverTap, and TalonOne through an intelligent multi-agent system.
 
-## What This Template Provides
+## What You'll Learn
 
-- Bilingual English and Vietnamese content structure
-- GitHub Pages Actions deployment
-- Page-bundled asset conventions
-- Legacy `/images/...` compatibility for older content
-- Devcontainer tooling for Hugo, diagrams, screenshots, OCR, and image optimization
+- How to use **AWS AgentCore** services to build, deploy, and manage AI agents at scale
+- The **Strands Agents** open-source framework from AWS for building multi-agent applications
+- Implementing **Agent-to-Agent (A2A)** communication for cross-platform orchestration
+- Deploying production-ready AI workflows using **AWS CDK** infrastructure as code
 
-## Example Sections
+## Workshop Sections
 
 {{% children description="true" /%}}
-
-## Authoring Direction
-
-New pages should use page bundles and relative Markdown paths for page-specific media. Shared static assets may still be used when appropriate, but new content should avoid root-relative `/images/...` paths.
