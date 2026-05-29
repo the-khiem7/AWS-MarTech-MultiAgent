@@ -10,38 +10,48 @@ pre: " <b> 1. </b> "
 
 ## The Modern Marketing Challenge
 
-Today's marketing teams operate across multiple specialized platforms. To launch a single campaign, a marketer must:
+To launch a single marketing campaign, a marketer must coordinate across three disconnected platforms:
 
-- **Query audience segments** through Databricks data warehouses
-- **Manage campaign workflows** in CleverTap
-- **Configure promotions and discounts** in TalonOne
+- **Databricks** — query audience segments, run SQL against data warehouses, discover schemas and tables in Unity Catalog
+- **CleverTap** — manage campaign lifecycle: create drafts, validate targeting, confirm delivery across push, email, SMS, WhatsApp, web push, and webhook channels
+- **TalonOne** — configure promotions, coupons, loyalty programs, customer sessions, and manage discount campaigns
 
-Each platform requires separate credentials, different interfaces, and domain-specific expertise. Switching between them slows down campaign launches, increases error rates, and fragments the marketer's workflow.
+Each platform requires separate credentials, different API contracts, and domain-specific expertise. The marketer spends more time context-switching between tools than designing effective campaigns.
 
 {{% notice info %}}
-**The bottom line**: A marketer spends more time juggling tools than actually designing and executing effective campaigns.
+**Real cost**: A campaign launch that should take minutes stretches into hours, with error-prone manual data transfer between platforms.
 {{% /notice %}}
 
-## Solution: AI-Guided Workflow
+## Solution: AI-Guided Multi-Agent Platform
 
-Instead of forcing the marketer to navigate each platform manually, we introduce an **AI-guided multi-agent system** where:
+Instead of forcing the marketer to navigate each platform manually, we introduce an **AI-powered multi-agent system** where four specialized agents collaborate to execute campaigns end-to-end:
 
-- A **Databricks Agent** handles audience segmentation and data queries
-- A **CleverTap Agent** orchestrates campaign creation and delivery
-- A **TalonOne Agent** manages promotions, coupons, and loyalty rules
-- A **Marketer Agent** (orchestrator) coordinates between them
+- A **Marketing Agent** orchestrate a strict 3-step campaign creation workflow, guiding the user at each decision point
+- A **Databricks Agent** explores data catalogs, runs SQL queries, and segments audiences
+- A **CleverTap Agent** creates draft campaigns, estimates reach, and confirms delivery after user approval
+- A **TalonOne Agent** manages promotions, loyalty programs, coupons, and customer sessions (optional step)
 
-The marketer simply describes their campaign goal in natural language, and the agents collaboratively execute it across platforms.
+The marketer simply chats with the orchestrator agent in natural language. The platform handles all cross-system coordination behind the scenes.
+
+## What You'll Build
+
+By the end of this workshop, you'll understand:
+
+| Component | What You'll Learn |
+|-----------|------------------|
+| **Multi-Agent Workflow** | How 4 agents coordinate through a 3-step campaign creation process with user confirmation at each stage |
+| **AWS AgentCore** | How AgentCore Runtime, Memory, and MCP Gateway eliminate infrastructure complexity |
+| **Platform Agents & MCP** | How 3 Lambda-based MCP servers expose 25+ tools across Databricks, CleverTap, and TalonOne |
+| **A2A Communication** | How agents delegate tasks to each other with SigV4 authentication, SSE streaming, and session persistence |
+| **Strands Framework** | How the open-source Strands Agents framework provides @tool decorators, hooks, MCP integration, and dynamic prompts |
+| **Web UI & Infrastructure** | How a React/Cloudscape frontend connects to 9 Lambda handlers, 4 AgentCore endpoints, and CDK-provisioned infrastructure |
 
 ## AWS AgentCore: The Foundation
 
-The entire system runs on **AWS AgentCore** — a managed service purpose-built for deploying and operating AI agents at scale. Over the following sections, you'll learn how each component works:
+The entire system runs on **AWS AgentCore** — a managed service purpose-built for deploying and operating AI agents at scale. It provides three core capabilities:
 
-| Component | Role |
-|-----------|------|
-| **AgentCore Runtime** | Serverless container hosting for AI agents |
-| **AgentCore Memory** | Persistent session memory across conversations |
-| **AgentCore MCP Gateway** | IAM-authenticated tool gateway for Lambda-based tools |
-| **A2A (Agent-to-Agent)** | Secure inter-agent communication protocol |
-
-By the end of this workshop, you'll understand how to build, deploy, and orchestrate a production-grade multi-agent marketing platform using AWS AgentCore services.
+| Service | Role in This Platform |
+|---------|----------------------|
+| **AgentCore Runtime** | Hosts all 4 agents as Docker containers with automatic scaling, SigV4 authentication, and built-in observability |
+| **AgentCore Memory** | Persists conversation context across messages, enabling the Marketing Agent to recall prior decisions in long-running campaigns |
+| **AgentCore MCP Gateway** | Routes tool calls from agents to 3 Lambda-based MCP servers with IAM authentication — decoupling agent logic from infrastructure |
