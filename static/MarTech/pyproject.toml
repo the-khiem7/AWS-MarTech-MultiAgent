@@ -1,0 +1,47 @@
+license = "ASL"
+license-files = [ "LICENSE" ]
+
+[project]
+name = "nx-workspace"
+version = "1.0.0"
+dependencies = [
+  "play_c463_z26_rzy_mar_tech.clevertap",
+  "play_c463_z26_rzy_mar_tech.common",
+  "play_c463_z26_rzy_mar_tech.databricks",
+  "play_c463_z26_rzy_mar_tech.marketer",
+  "play_c463_z26_rzy_mar_tech.talonone"
+]
+
+[tool.uv.workspace]
+members = [
+  "packages/agents/clevertap",
+  "packages/agents/databricks",
+  "packages/agents/talonone",
+  "packages/agents/marketer",
+  "packages/agents/common"
+]
+
+[tool.uv.sources."play_c463_z26_rzy_mar_tech.clevertap"]
+workspace = true
+
+[tool.uv.sources."play_c463_z26_rzy_mar_tech.common"]
+workspace = true
+
+[tool.uv.sources."play_c463_z26_rzy_mar_tech.databricks"]
+workspace = true
+
+[tool.uv.sources."play_c463_z26_rzy_mar_tech.marketer"]
+workspace = true
+
+[tool.uv.sources."play_c463_z26_rzy_mar_tech.talonone"]
+workspace = true
+
+[dependency-groups]
+dev = [
+  "ruff>=0.8.2",
+  "autopep8>=2.3.1",
+  "pytest>=8.3.4",
+  "pytest-sugar>=1.0.0",
+  "pytest-cov>=6.0.0",
+  "pytest-html>=4.1.1"
+]

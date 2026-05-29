@@ -1,0 +1,8 @@
+// Copyright 2026 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0
+// Licensed under the Amazon Software License  https://aws.amazon.com/asl/
+import { useContext } from 'react';
+import { AppLayoutContext } from '../components/AppLayout';
+
+export const useAppLayout = (): AppLayoutContext =>
+  useContext(AppLayoutContext);

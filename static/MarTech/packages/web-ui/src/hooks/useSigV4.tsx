@@ -1,0 +1,80 @@
+// Copyright 2026 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0
+// Licensed under the Amazon Software License  https://aws.amazon.com/asl/
+import { AwsClient } from 'aws4fetch';
+import { CognitoIdentityClient } from '@aws-sdk/client-cognito-identity';
+import { fromCognitoIdentityPool } from '@aws-sdk/credential-provider-cognito-identity';
+import { useCallback, useRef } from 'react';
+import { useAuth } from 'react-oidc-context';
+import { useRuntimeConfig } from './useRuntimeConfig';
+import {
+  AwsCredentialIdentity,
+  AwsCredentialIdentityProvider,
+} from '@smithy/types';
+
+// Credential expiration grace time before considering credentials as expired
+const CREDENTIAL_EXPIRY_OFFSET_MILLIS = 30 * 1000;
+
+export const useSigV4 = () => {
+  const { cognitoProps } = useRuntimeConfig();
+  const auth = useAuth();
+  const user = auth?.user;
+
+  const cachedCredentials = useRef<{ [key: string]: AwsCredentialIdentity }>(
+    {},
+  );
+
+  const withCachedCredentials = useCallback(
+    async (
+      provider: AwsCredentialIdentityProvider,
+      ...cacheKeys: string[]
+    ): Promise<AwsCredentialIdentity> => {
+      const key = `sigv4/${cacheKeys.join('/')}`;
+      const cachedCreds = cachedCredentials.current[key];
+      if (
+        cachedCreds &&
+        cachedCreds.expiration &&
+        cachedCreds.expiration.getTime() >
+          Date.now() + CREDENTIAL_EXPIRY_OFFSET_MILLIS
+      ) {
+        return cachedCreds;
+      }
+      const credentials = await provider();
+      cachedCredentials.current[key] = credentials;
+      return credentials;
+    },
+    [],
+  );
+
+  return useCallback(
+    async (input: RequestInfo | URL, init?: RequestInit | undefined) => {
+      if (!cognitoProps && import.meta.env.MODE === 'serve-local') {
+        // Skip request signing in serve-local mode when cognitoProps are not set
+        return fetch(input, init);
+      }
+      if (!cognitoProps) {
+        throw new Error('cognitoProps is undefined!');
+      }
+      if (!user?.id_token) {
+        throw new Error('user.id_token is undefined!');
+      }
+
+      const credentialsFromCognitoIdentityPool = fromCognitoIdentityPool({
+        client: new CognitoIdentityClient({ region: cognitoProps.region }),
+        identityPoolId: cognitoProps.identityPoolId,
+        logins: {
+          [`cognito-idp.${cognitoProps.region}.amazonaws.com/${cognitoProps.userPoolId}`]:
+            user.id_token,
+        },
+      });
+      const credential = await withCachedCredentials(
+        credentialsFromCognitoIdentityPool,
+        cognitoProps.identityPoolId,
+        user.profile.sub,
+      );
+      const awsClient = new AwsClient(credential);
+      return awsClient.fetch(input, init);
+    },
+    [cognitoProps, user?.id_token, user?.profile.sub, withCachedCredentials],
+  );
+};
