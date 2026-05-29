@@ -1,0 +1,35 @@
+baseURL = "/"
+relativeURLs = false
+canonifyURLs = false
+defaultContentLanguage = "en"
+ignoreFiles = ['(?:^|/)_tools(?:/|$)']
+
+theme = "hugo-theme-learn"
+
+[outputs]
+home = ["HTML", "RSS", "JSON"]
+
+[params]
+themeVariant = "workshop"
+editURL = ""
+description = "Bilingual Hugo documentation template with GitHub Pages deployment and authoring tooling."
+author = "thienlh@thienlu.com"
+showVisitedLinks = true
+disableBreadcrumb = false
+disableNextPrev = false
+
+[Languages]
+[Languages.en]
+title = "Hugo Documentation Template"
+weight = 1
+languageName = "English"
+
+[Languages.vi]
+title = "Mẫu Tài Liệu Hugo"
+weight = 2
+languageName = "Tiếng Việt"
+
+[markup]
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true

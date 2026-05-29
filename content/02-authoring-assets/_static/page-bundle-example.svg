@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360" viewBox="0 0 880 360" role="img" aria-labelledby="title desc">
+  <title id="title">Page bundle asset folders</title>
+  <desc id="desc">A page bundle convention showing Markdown content using static assets from _static, while _diagrams is reserved for generated mingrammer diagrams.</desc>
+  <rect width="880" height="360" fill="#f7f9fb"/>
+
+  <text x="440" y="44" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#17324d">Page bundle asset convention</text>
+
+  <rect x="48" y="94" width="230" height="150" rx="8" fill="#ffffff" stroke="#2f5d8c" stroke-width="3"/>
+  <text x="163" y="148" text-anchor="middle" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#17324d">_index.md</text>
+  <text x="163" y="182" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#46627a">Markdown content</text>
+  <text x="163" y="210" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#46627a">uses relative paths</text>
+
+  <path d="M304 144 H428" stroke="#2f5d8c" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="366" y="124" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#46627a">normal media</text>
+
+  <rect x="452" y="82" width="250" height="124" rx="8" fill="#ffffff" stroke="#317a52" stroke-width="3"/>
+  <text x="577" y="126" text-anchor="middle" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#1f4d35">_static/</text>
+  <text x="577" y="158" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#4a6a58">screenshots, hand-made images,</text>
+  <text x="577" y="182" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#4a6a58">exported SVGs, attachments</text>
+
+  <rect x="452" y="230" width="250" height="90" rx="8" fill="#ffffff" stroke="#8c5f2f" stroke-width="3"/>
+  <text x="577" y="266" text-anchor="middle" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#664014">_diagrams/</text>
+  <text x="577" y="294" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#7a5a35">generated mingrammer output only</text>
+
+  <path d="M304 208 C356 244 390 272 428 274" fill="none" stroke="#8c5f2f" stroke-width="3" stroke-dasharray="8 8" marker-end="url(#arrow-brown)"/>
+  <text x="358" y="254" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#7a5a35">generated diagrams</text>
+
+  <rect x="730" y="110" width="102" height="174" rx="8" fill="#eef4f9" stroke="#9bb3c9" stroke-width="2"/>
+  <text x="781" y="148" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#17324d">_tools/</text>
+  <text x="781" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#46627a">scripts</text>
+  <text x="781" y="204" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#46627a">sources</text>
+  <text x="781" y="228" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#46627a">manifests</text>
+
+  <path d="M730 228 C706 244 700 258 704 274" fill="none" stroke="#8c5f2f" stroke-width="3" marker-end="url(#arrow-brown)"/>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2f5d8c"/>
+    </marker>
+    <marker id="arrow-brown" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#8c5f2f"/>
+    </marker>
+  </defs>
+</svg>

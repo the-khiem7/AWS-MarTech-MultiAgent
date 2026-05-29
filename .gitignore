@@ -1,0 +1,14 @@
+# Hugo build output and cache
+public/
+resources/
+.hugo_build.lock
+
+# Local Python environment for diagram generation
+.venv/
+__pycache__/
+*.py[cod]
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+.idea/

@@ -1,0 +1,8 @@
+{{/* Convert legacy /images/... paths for GitHub Pages project URLs. */}}
+{{- $content := . -}}
+{{- $imageBase := "images/" | relURL -}}
+{{- $content = replace $content `src="/images/` (printf `src="%s` $imageBase) -}}
+{{- $content = replace $content `src='/images/` (printf `src='%s` $imageBase) -}}
+{{- $content = replace $content `href="/images/` (printf `href="%s` $imageBase) -}}
+{{- $content = replace $content `href='/images/` (printf `href='%s` $imageBase) -}}
+{{- $content | safeHTML -}}

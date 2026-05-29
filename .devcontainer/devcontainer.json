@@ -1,0 +1,54 @@
+{
+  "name": "Hugo Development",
+  "build": {
+    "context": "..",
+    "dockerfile": "Dockerfile",
+    "args": {
+      "HUGO_VERSION": "0.134.3"
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": false,
+      "username": "vscode"
+    },
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "forwardPorts": [1313],
+  "portsAttributes": {
+    "1313": {
+      "label": "Hugo Live Preview",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "customizations": {
+    "codespaces": {
+      "openFiles": [
+        "content/_index.md",
+        ".devcontainer/devcontainer.json"
+      ]
+    },
+    "vscode": {
+      "settings": {
+        "files.exclude": {
+          "**/.hugo_build.lock": true,
+          "**/public": true
+        }
+      },
+      "extensions": [
+        "cweijan.vscode-office",
+        "usernamehw.errorlens",
+        "budparr.language-hugo-vscode",
+        "tamasfe.even-better-toml",
+        "ms-vscode.vscode-markdown-preview",
+        "davidanson.vscode-markdownlint",
+        "streetsidesoftware.code-spell-checker",
+        "ms-vscode.vscode-json",
+        "ms-vscode.vscode-yaml"
+      ]
+    }
+  },
+  "postCreateCommand": "bash -lc 'set -euo pipefail; hugo version; python --version; python -c \"import diagrams, PIL, pytesseract, yaml; print(diagrams.__file__)\"; dot -V; magick -version; tesseract --version | head -n 1; cwebp -version; pngquant --version; optipng -version | head -n 1'",
+  "remoteUser": "vscode"
+}
