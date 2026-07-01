@@ -12,7 +12,7 @@ The Marketing Agent enforces a strict three-step campaign creation workflow. The
 
 ## Step 1 — Define Target Audience
 
-```mermaid
+{{< mermaid >}}
 sequenceDiagram
     participant UI as Web UI
     participant API as API Handler
@@ -30,7 +30,7 @@ sequenceDiagram
     DB-->>Mkt: Audience data
     Mkt-->>UI: Stream audience details (SSE)
     Note over Mkt,UI: User reviews and confirms audience
-```
+{{< /mermaid >}}
 
 The **Databricks Agent** handles this step using 8 MCP tools:
 
@@ -53,7 +53,7 @@ This is the most conversation-intensive step. A real session logged 26 messages 
 
 ## Step 2 — Create Campaign in CleverTap
 
-```mermaid
+{{< mermaid >}}
 sequenceDiagram
     participant UI as Web UI
     participant API as API Handler
@@ -70,7 +70,7 @@ sequenceDiagram
     GW-->>CT: Tool results
     CT-->>Mkt: Campaign details
     Mkt-->>UI: Stream campaign confirmation (SSE)
-```
+{{< /mermaid >}}
 
 The **CleverTap Agent** enforces a draft-first workflow:
 
@@ -91,7 +91,7 @@ The agent **always** creates a draft first. It never creates a campaign directly
 
 ## Step 3 — Create Promotion in TalonOne (Optional)
 
-```mermaid
+{{< mermaid >}}
 sequenceDiagram
     participant UI as Web UI
     participant API as API Handler
@@ -108,7 +108,7 @@ sequenceDiagram
     GW-->>TO: Tool results
     TO-->>Mkt: Promotion details
     Mkt-->>UI: Stream promotion confirmation (SSE)
-```
+{{< /mermaid >}}
 
 The **TalonOne Agent** provides 11 tools across four domains:
 

@@ -12,7 +12,7 @@ Marketing Agent thực thi một quy trình tạo chiến dịch ba bước nghi
 
 ## Bước 1 — Xác Định Đối Tượng Mục Tiêu
 
-```mermaid
+{{< mermaid >}}
 sequenceDiagram
     participant UI as Web UI
     participant API as API Handler
@@ -30,7 +30,7 @@ sequenceDiagram
     DB-->>Mkt: Dữ liệu audience
     Mkt-->>UI: Stream chi tiết audience (SSE)
     Note over Mkt,UI: Người dùng xem xét và xác nhận audience
-```
+{{< /mermaid >}}
 
 **Databricks Agent** xử lý bước này bằng 8 MCP tools:
 
@@ -53,7 +53,7 @@ sequenceDiagram
 
 ## Bước 2 — Tạo Chiến Dịch Trong CleverTap
 
-```mermaid
+{{< mermaid >}}
 sequenceDiagram
     participant UI as Web UI
     participant API as API Handler
@@ -70,7 +70,7 @@ sequenceDiagram
     GW-->>CT: Tool results
     CT-->>Mkt: Chi tiết chiến dịch
     Mkt-->>UI: Stream xác nhận chiến dịch (SSE)
-```
+{{< /mermaid >}}
 
 **CleverTap Agent** thực thi workflow draft-first:
 
@@ -91,7 +91,7 @@ Agent **luôn** tạo bản nháp trước. Nó không bao giờ tạo chiến d
 
 ## Bước 3 — Tạo Khuyến Mãi Trong TalonOne (Tùy Chọn)
 
-```mermaid
+{{< mermaid >}}
 sequenceDiagram
     participant UI as Web UI
     participant API as API Handler
@@ -108,7 +108,7 @@ sequenceDiagram
     GW-->>TO: Tool results
     TO-->>Mkt: Chi tiết khuyến mãi
     Mkt-->>UI: Stream xác nhận khuyến mãi (SSE)
-```
+{{< /mermaid >}}
 
 **TalonOne Agent** cung cấp 11 tools trên bốn lĩnh vực:
 

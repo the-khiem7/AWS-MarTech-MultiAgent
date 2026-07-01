@@ -43,7 +43,7 @@ Dùng SigV4 thay vì API key có nghĩa là agent của bạn không bao giờ p
 
 `AgentConstruct` tạo một **AgentCore Memory** dùng chung (`marketer_memory`) cho Marketing Agent. Memory ID được truyền qua biến môi trường `MEMORY_ID`.
 
-```mermaid
+{{< mermaid >}}
 sequenceDiagram
     participant UI as Web UI
     participant API as Put Chat Lambda
@@ -61,7 +61,7 @@ sequenceDiagram
     API->>Mkt: Gọi với session_id=abc
     Mkt->>Mem: Nhớ lại: "session abc, bước 1 đã xác nhận"
     Mkt->>Mkt: Tiếp tục bước 2...
-```
+{{< /mermaid >}}
 
 Marketing Agent cấu hình Memory qua `AgentCoreMemoryConfig` và `AgentCoreMemorySessionManager`. Chat History API handler (`GET /chat/:sessionId`) đọc từ Memory bằng `ListEventsCommand` để tái tạo lịch sử hội thoại cho UI.
 

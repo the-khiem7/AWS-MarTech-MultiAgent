@@ -25,7 +25,7 @@ Nền tảng MarTech áp dụng kiến trúc phân lớp, nơi bốn AI agent ch
 
 ## Technology Stack
 
-```mermaid
+{{< mermaid >}}
 graph TD
     A[Trình Duyệt] -->|REST + SigV4| B[API Gateway + Cognito]
     B --> C[9 Lambda Handlers]
@@ -47,7 +47,7 @@ graph TD
     E --> P
     F --> P
     G --> P
-```
+{{< /mermaid >}}
 
 ## Lớp Hạ Tầng (AWS CDK)
 

@@ -124,7 +124,7 @@ Always prefer these shortcodes over raw HTML for consistent styling:
 
 The devcontainer includes these tools. Use them when creating visuals:
 
-- **Mermaid diagrams:** Use the `mermaid` shortcode (rendered client-side, no build dependency)
+- **Mermaid diagrams:** Use the `{{< mermaid >}}` shortcode — NEVER use fenced code blocks (` ```mermaid `). Hugo's Goldmark renderer treats fenced code blocks as `<pre><code>`, which renders as raw text. Only the `{{< mermaid >}}` shortcode produces `<div class="mermaid">` that triggers the Mermaid JS library client-side rendering.
 - **Python diagrams:** `diagrams` library for AWS architecture diagrams. Generate with `python generate_diagram.py` in devcontainer, output PNG/SVG to `_static/`
 - **Screenshots:** Capture with whatever tool; optimize with `optipng` or `pngquant` before committing
 - **SVG is preferred** for diagrams (scalable, smaller size); PNG for screenshots only

@@ -91,7 +91,7 @@ Trong phiên này, người dùng đã qua Bước 1 (26 tin nhắn Databricks) 
 
 Session ID chảy qua toàn bộ chuỗi gọi:
 
-```mermaid
+{{< mermaid >}}
 sequenceDiagram
     participant UI as Web UI
     participant Lambda as Put Chat Lambda
@@ -105,7 +105,7 @@ sequenceDiagram
     Note over DB: SessionIdMiddleware đọc header, đặt current_session_id
     Mkt->>S3: Ghi orchestrator/message_*.json
     DB->>S3: Ghi databricks-agent/message_*.json
-```
+{{< /mermaid >}}
 
 **Cơ chế chính**:
 

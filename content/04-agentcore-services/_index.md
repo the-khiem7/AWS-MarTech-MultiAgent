@@ -43,7 +43,7 @@ Using SigV4 authentication instead of API keys means your agents never need to m
 
 The `AgentConstruct` creates a shared **AgentCore Memory** resource (`marketer_memory`) used by the Marketing Agent. The Memory ID is passed via the `MEMORY_ID` environment variable.
 
-```mermaid
+{{< mermaid >}}
 sequenceDiagram
     participant UI as Web UI
     participant API as Put Chat Lambda
@@ -61,7 +61,7 @@ sequenceDiagram
     API->>Mkt: Invoke with session_id=abc
     Mkt->>Mem: Recall: "session abc, step 1 confirmed"
     Mkt->>Mkt: Continue to step 2...
-```
+{{< /mermaid >}}
 
 The Marketing Agent configures Memory via `AgentCoreMemoryConfig` and `AgentCoreMemorySessionManager`. The Chat History API handler (`GET /chat/:sessionId`) reads from Memory using `ListEventsCommand` to reconstruct conversation history for the UI.
 

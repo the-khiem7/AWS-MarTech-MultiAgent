@@ -91,7 +91,7 @@ In this session, the user went through Step 1 (26 Databricks messages) and Step 
 
 The session ID flows through the entire call chain:
 
-```mermaid
+{{< mermaid >}}
 sequenceDiagram
     participant UI as Web UI
     participant Lambda as Put Chat Lambda
@@ -105,7 +105,7 @@ sequenceDiagram
     Note over DB: SessionIdMiddleware reads header, sets current_session_id
     Mkt->>S3: Write orchestrator/message_*.json
     DB->>S3: Write databricks-agent/message_*.json
-```
+{{< /mermaid >}}
 
 **Key mechanisms**:
 

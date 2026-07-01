@@ -25,7 +25,7 @@ The MarTech platform follows a layered architecture where four specialized AI ag
 
 ## Technology Stack
 
-```mermaid
+{{< mermaid >}}
 graph TD
     A[Browser] -->|REST + SigV4| B[API Gateway + Cognito]
     B --> C[9 Lambda Handlers]
@@ -47,7 +47,7 @@ graph TD
     E --> P
     F --> P
     G --> P
-```
+{{< /mermaid >}}
 
 ## Infrastructure Layer (AWS CDK)
 
