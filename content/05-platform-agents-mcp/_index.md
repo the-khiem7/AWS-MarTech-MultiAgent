@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 5. </b> "
 ---
 
-# Platform Agents & MCP Servers
-
 Three platform-specific agents handle Databricks, CleverTap, and TalonOne operations. Each connects to a dedicated Lambda-based MCP server behind the AgentCore MCP Gateway for tool execution.
 
 ---

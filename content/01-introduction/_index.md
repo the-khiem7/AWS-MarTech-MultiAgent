@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-# Introduction
-
 ## The Modern Marketing Challenge
 
 To launch a single marketing campaign, a marketer must coordinate across three disconnected platforms:

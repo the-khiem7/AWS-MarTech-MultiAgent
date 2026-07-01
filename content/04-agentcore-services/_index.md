@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 4. </b> "
 ---
 
-# AWS AgentCore Services
-
 AWS AgentCore is the managed service backbone powering the entire multi-agent system. It provides three core capabilities that eliminate the undifferentiated heavy lifting of building production AI agent infrastructure.
 
 ---

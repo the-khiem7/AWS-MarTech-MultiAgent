@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2. </b> "
 ---
 
-# Architecture Overview
-
 ## System Architecture
 
 The MarTech platform follows a layered architecture where four specialized AI agents interact with marketing platforms through a unified orchestration layer.

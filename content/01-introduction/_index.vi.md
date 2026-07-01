@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-# Giới Thiệu
-
 ## Thách Thức Marketing Hiện Đại
 
 Để triển khai một chiến dịch marketing, marketer phải điều phối trên ba nền tảng rời rạc:

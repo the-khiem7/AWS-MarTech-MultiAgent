@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 3. </b> "
 ---
 
-# Multi-Agent Workflow
-
 The Marketing Agent enforces a strict three-step campaign creation workflow. The user must confirm each step before proceeding — the agent refuses to help with anything outside this workflow.
 
 ## Step 1 — Define Target Audience

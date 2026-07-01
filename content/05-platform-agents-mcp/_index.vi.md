@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 5. </b> "
 ---
 
-# Platform Agents & MCP Servers
-
 Ba platform-specific agent xử lý các thao tác Databricks, CleverTap, và TalonOne. Mỗi agent kết nối với một Lambda-based MCP server chuyên dụng phía sau AgentCore MCP Gateway.
 
 ---

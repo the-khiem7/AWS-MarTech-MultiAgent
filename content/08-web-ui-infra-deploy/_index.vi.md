@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 8. </b> "
 ---
 
-# Web UI & Hạ Tầng
-
 ## Web UI
 
 Web UI là một single-page application React/TypeScript cung cấp giao diện người dùng cho quản lý chiến dịch và tương tác agent. Nó sử dụng **Cloudscape Design System** — design language mã nguồn mở của AWS — cho trải nghiệm chất lượng console.

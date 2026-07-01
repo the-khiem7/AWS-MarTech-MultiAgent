@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 6. </b> "
 ---
 
-# A2A & Session Persistence
-
 The Agent-to-Agent (A2A) protocol and session persistence mechanism are deeply intertwined. Understanding how session IDs propagate through A2A calls is key to understanding how all four agents maintain a coherent conversation.
 
 ---

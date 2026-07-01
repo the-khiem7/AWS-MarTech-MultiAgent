@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 6. </b> "
 ---
 
-# A2A & Lưu Trữ Phiên
-
 Giao thức Agent-to-Agent (A2A) và cơ chế lưu trữ phiên liên kết chặt chẽ với nhau. Hiểu cách session ID lan truyền qua các A2A call là chìa khóa để hiểu cách cả bốn agent duy trì một hội thoại nhất quán.
 
 ---

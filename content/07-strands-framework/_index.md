@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 7. </b> "
 ---
 
-# Strands Agents Framework
-
 **Strands Agents** is an open-source agent framework from AWS that provides the building blocks for creating, composing, and deploying AI agents. All four agents in the MarTech platform are built with Strands.
 
 ## Key Features

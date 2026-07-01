@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 3. </b> "
 ---
 
-# Multi-Agent Workflow
-
 Marketing Agent thực thi một quy trình tạo chiến dịch ba bước nghiêm ngặt. Người dùng phải xác nhận mỗi bước trước khi tiếp tục — agent từ chối giúp đỡ bất cứ điều gì ngoài workflow này.
 
 ## Bước 1 — Xác Định Đối Tượng Mục Tiêu

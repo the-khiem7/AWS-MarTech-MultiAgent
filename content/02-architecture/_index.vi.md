@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2. </b> "
 ---
 
-# Tổng Quan Kiến Trúc
-
 ## Kiến Trúc Hệ Thống
 
 Nền tảng MarTech áp dụng kiến trúc phân lớp, nơi bốn AI agent chuyên biệt tương tác với các nền tảng marketing thông qua một lớp điều phối thống nhất.

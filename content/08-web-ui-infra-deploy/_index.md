@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 8. </b> "
 ---
 
-# Web UI & Infrastructure
-
 ## Web UI
 
 The Web UI is a React/TypeScript single-page application that provides the user-facing interface for campaign management and agent interaction. It uses the **Cloudscape Design System** — AWS's open-source design language — for a console-quality experience.

@@ -172,6 +172,8 @@ body {
   color: var(--MAIN-TEXT-color) !important;
   font-family: "Amazon Ember", "Work Sans", sans-serif;
   text-align: left;
+  font-size: 18px !important;
+  line-height: 1.7 !important;
 }
 
 h1,
