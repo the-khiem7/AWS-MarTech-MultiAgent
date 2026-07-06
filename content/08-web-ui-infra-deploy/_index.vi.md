@@ -16,13 +16,14 @@ Web UI là một single-page application React/TypeScript cung cấp giao diện
 |-----------|---------|
 | **React 19** | UI framework |
 | **TanStack Router** | Type-safe file-based routing |
-| **TanStack React Query** | Server state management và caching |
+| **TanStack React Query + tRPC** | Server state management và caching |
 | **Cloudscape Components** | UI components phong cách AWS |
 | **Cloudscape Chat Components** | Widget chat thời gian thực |
 | **Cloudscape Board Components** | Bố cục dashboard |
 | **Tailwind CSS 4** | Utility-first styling |
 | **Cognito + OIDC** | Xác thực qua `react-oidc-context` |
 | **aws4fetch** | Ký request SigV4 |
+| **Vite + Rolldown** | Bundling frontend (Vite) + bundling Lambda (Rolldown) |
 
 ### Provider Hierarchy
 
@@ -141,7 +142,11 @@ Tất cả buckets bắt buộc SSL và chặn public access.
 | `listBedrockModels` | GET /configuration/models | 30s | Bedrock ListFoundationModels, ListInferenceProfiles |
 | `getSqlResult` | GET /sql-result/:key+ | 30s | S3 GetObject |
 
-Tất cả handlers dùng Node.js latest runtime với X-Ray tracing (trừ `putChat` dùng response streaming).
+Tất cả handlers dùng Node.js 22.x runtime với X-Ray tracing (trừ `putChat` dùng response streaming). Lambda handlers được bundle bằng Rolldown.
+
+{{% notice warning %}}
+**Dịch vụ xem trước**: CDK construct `@aws-cdk/aws-bedrock-agentcore-alpha` là gói alpha/preview. API và hành vi có thể thay đổi trước khi GA.
+{{% /notice %}}
 
 ### Chat History Consolidation
 
@@ -162,8 +167,8 @@ Handler `getChatHistory` thực hiện xử lý đáng kể:
 
 ```
 packages/
-  web-ui/          # React frontend (Vite)
-  api/             # Lambda handlers (Node.js)
+  web-ui/          # React frontend (Vite, Cloudscape, TanStack)
+  api/             # Lambda handlers (Node.js, bundled với Rolldown)
   infra/           # AWS CDK (TypeScript)
   common/
     constructs/    # Shared CDK constructs

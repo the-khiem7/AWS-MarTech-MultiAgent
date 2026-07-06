@@ -8,6 +8,10 @@ pre: " <b> 4. </b> "
 
 AWS AgentCore is the managed service backbone powering the entire multi-agent system. It provides three core capabilities that eliminate the undifferentiated heavy lifting of building production AI agent infrastructure.
 
+{{% notice warning %}}
+**Preview service**: AgentCore and its CDK constructs (`@aws-cdk/aws-bedrock-agentcore-alpha`) are in alpha/preview. APIs, IAM schemas, and behavioral contracts may change before general availability. Test thoroughly before production use.
+{{% /notice %}}
+
 ---
 
 ## AgentCore Runtime

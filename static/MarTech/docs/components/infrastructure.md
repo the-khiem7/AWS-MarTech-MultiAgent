@@ -77,7 +77,7 @@ Deploys nine Lambda functions and wires them to API Gateway routes with Cognito 
 | listBedrockModels | GET /configuration/models     | 30s     | Bedrock ListFoundationModels, ListInferenceProfiles |
 | getSqlResult      | GET /sql-result/:key+         | 30s     | S3 GetObject                                        |
 
-All handlers use Node.js latest runtime with X-Ray tracing enabled (except putChat which uses response streaming).
+All handlers use Node.js 22.x runtime with X-Ray tracing enabled (except putChat which uses response streaming). Lambda handlers are bundled with Rolldown.
 
 ### SeedConfig
 

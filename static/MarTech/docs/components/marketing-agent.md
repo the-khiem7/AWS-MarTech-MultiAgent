@@ -66,10 +66,10 @@ The A2A utility module handles communication with worker agents deployed on Agen
 
 Located in [`app/agent/hooks/s3_artifact.py`](../../packages/agents/marketer/app/agent/hooks/s3_artifact.py):
 
-The `S3ArtifactHook` saves conversation messages to S3 following the Strands `FileSessionManager` directory structure:
+The `S3ArtifactHook` saves conversation messages to S3 using the shared `S3ArtifactHook` pattern with agent_id `orchestrator`:
 
 ```
-/<bucket>/<session_id>/agents/agent_marketer/messages/message_0.json
+/<bucket>/<session_id>/orchestrator/messages/message_0.json
 ```
 
 It registers a `MessageAddedEvent` callback with the agent's hook registry. This is write-only - session restoration is handled by AgentCore Memory.

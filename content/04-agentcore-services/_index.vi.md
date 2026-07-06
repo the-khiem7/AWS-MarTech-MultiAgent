@@ -8,6 +8,10 @@ pre: " <b> 4. </b> "
 
 AWS AgentCore là xương sống dịch vụ quản lý cho toàn bộ hệ thống multi-agent. Nó cung cấp ba khả năng cốt lõi giúp loại bỏ công việc nặng nhọc khi xây dựng hạ tầng AI agent production.
 
+{{% notice warning %}}
+**Dịch vụ xem trước**: AgentCore và CDK constructs của nó (`@aws-cdk/aws-bedrock-agentcore-alpha`) đang trong giai đoạn alpha/preview. API, IAM schemas, và hợp đồng hành vi có thể thay đổi trước khi GA. Kiểm tra kỹ trước khi dùng production.
+{{% /notice %}}
+
 ---
 
 ## AgentCore Runtime

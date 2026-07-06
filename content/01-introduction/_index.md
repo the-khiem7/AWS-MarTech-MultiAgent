@@ -6,6 +6,10 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
+{{% notice tip %}}
+**Before you begin**: You will need an AWS account with permissions to deploy AgentCore Runtimes, Lambda functions, API Gateway, Cognito, DynamoDB, S3, and SSM Parameter Store. See the [Prerequisites & Setup]({{< ref "09-prerequisites" >}}) section for detailed requirements and cost estimates.
+{{% /notice %}}
+
 ## The Modern Marketing Challenge
 
 To launch a single marketing campaign, a marketer must coordinate across three disconnected platforms:

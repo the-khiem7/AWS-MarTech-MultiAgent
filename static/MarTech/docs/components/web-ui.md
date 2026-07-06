@@ -8,10 +8,13 @@ The Web UI is a React/TypeScript single-page application that provides the user-
 
 ## Technology Stack
 
-- React 18 with TypeScript
+- React 19 with TypeScript
 - TanStack Router (file-based routing)
-- [AWS Cloudscape Design System](https://cloudscape.design/) (components + chat components)
-- Vite (build tooling)
+- TanStack React Query + tRPC (server state management)
+- [AWS Cloudscape Design System](https://cloudscape.design/) (components, chat components, board components)
+- Tailwind CSS 4 (utility-first styling via `@tailwindcss/vite`)
+- Vite (frontend build tooling)
+- Rolldown (Lambda handler bundling)
 - Amazon Cognito (OIDC authentication)
 - SigV4 request signing via `aws4fetch`
 

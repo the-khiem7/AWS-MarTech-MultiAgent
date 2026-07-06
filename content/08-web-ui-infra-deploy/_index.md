@@ -16,13 +16,14 @@ The Web UI is a React/TypeScript single-page application that provides the user-
 |-----------|---------|
 | **React 19** | UI framework |
 | **TanStack Router** | Type-safe file-based routing |
-| **TanStack React Query** | Server state management and caching |
+| **TanStack React Query + tRPC** | Server state management and caching |
 | **Cloudscape Components** | AWS-styled UI components |
 | **Cloudscape Chat Components** | Real-time chat widgets |
 | **Cloudscape Board Components** | Dashboard layout |
 | **Tailwind CSS 4** | Utility-first styling |
 | **Cognito + OIDC** | Authentication via `react-oidc-context` |
 | **aws4fetch** | SigV4 request signing |
+| **Vite + Rolldown** | Frontend bundling (Vite) + Lambda bundling (Rolldown) |
 
 ### Provider Hierarchy
 
@@ -141,7 +142,11 @@ All buckets enforce SSL and block public access.
 | `listBedrockModels` | GET /configuration/models | 30s | Bedrock ListFoundationModels, ListInferenceProfiles |
 | `getSqlResult` | GET /sql-result/:key+ | 30s | S3 GetObject |
 
-All handlers use Node.js latest runtime with X-Ray tracing enabled (except `putChat` which uses response streaming).
+All handlers use Node.js 22.x runtime with X-Ray tracing enabled (except `putChat` which uses response streaming). Lambda handlers are bundled with Rolldown.
+
+{{% notice warning %}}
+**Preview service**: The `@aws-cdk/aws-bedrock-agentcore-alpha` CDK construct is an alpha/preview package. APIs and behaviors may change before general availability.
+{{% /notice %}}
 
 ### Chat History Consolidation
 
@@ -162,8 +167,8 @@ This ensures the UI displays a clean, coherent conversation despite the internal
 
 ```
 packages/
-  web-ui/          # React frontend (Vite)
-  api/             # Lambda handlers (Node.js)
+  web-ui/          # React frontend (Vite, Cloudscape, TanStack)
+  api/             # Lambda handlers (Node.js, bundled with Rolldown)
   infra/           # AWS CDK (TypeScript)
   common/
     constructs/    # Shared CDK constructs

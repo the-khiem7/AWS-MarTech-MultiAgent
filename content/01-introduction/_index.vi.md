@@ -6,6 +6,10 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
+{{% notice tip %}}
+**Trước khi bắt đầu**: Bạn cần một tài khoản AWS có quyền triển khai AgentCore Runtimes, Lambda functions, API Gateway, Cognito, DynamoDB, S3, và SSM Parameter Store. Xem phần [Yêu Cầu & Thiết Lập]({{< ref "09-prerequisites" >}}) để biết yêu cầu chi tiết và ước tính chi phí.
+{{% /notice %}}
+
 ## Thách Thức Marketing Hiện Đại
 
 Để triển khai một chiến dịch marketing, marketer phải điều phối trên ba nền tảng rời rạc:
