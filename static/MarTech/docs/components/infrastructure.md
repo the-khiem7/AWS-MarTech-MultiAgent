@@ -8,13 +8,13 @@ The infrastructure is defined using AWS CDK (TypeScript) and deployed as a singl
 
 The `ApplicationStack` is the top-level stack that orchestrates all resources. It instantiates the following constructs in order:
 
-1. **UserIdentity** — Cognito user pool with an admin user
-2. **StorageAndData** — DynamoDB table and S3 buckets
-3. **GatewayConstruct** — AgentCore MCP Gateway with three Lambda targets
-4. **AgentConstruct** — Four agents (marketer + 3 workers) with shared memory
-5. **SeedConfig** — Seeds default agent configuration into SSM Parameter Store
-6. **APIConstruct** — Nine Lambda handlers with API Gateway
-7. **WebUi** — Static site deployment to S3
+1. **UserIdentity** - Cognito user pool with an admin user
+2. **StorageAndData** - DynamoDB table and S3 buckets
+3. **GatewayConstruct** - AgentCore MCP Gateway with three Lambda targets
+4. **AgentConstruct** - Four agents (marketer + 3 workers) with shared memory
+5. **SeedConfig** - Seeds default agent configuration into SSM Parameter Store
+6. **APIConstruct** - Nine Lambda handlers with API Gateway
+7. **WebUi** - Static site deployment to S3
 
 ## Constructs
 
@@ -24,10 +24,10 @@ The `ApplicationStack` is the top-level stack that orchestrates all resources. I
 
 Provisions the data layer:
 
-- **Campaigns DynamoDB Table** — partition key `id` (String), PAY_PER_REQUEST billing, AWS-managed encryption, point-in-time recovery enabled. Includes a GSI (`CampaignActiveIndex`) partitioned by `active` and sorted by `createdAt`.
-- **Sessions S3 Bucket** — stores conversation artifacts from the Marketing Agent's S3 hook. EventBridge enabled, server access logging to the access logs bucket.
-- **SQL Results S3 Bucket** — stores full SQL result sets uploaded by the Databricks MCP Server when results are truncated. CORS enabled for GET requests.
-- **Access Logs S3 Bucket** — server access logs for the other buckets.
+- **Campaigns DynamoDB Table** - partition key `id` (String), PAY_PER_REQUEST billing, AWS-managed encryption, point-in-time recovery enabled. Includes a GSI (`CampaignActiveIndex`) partitioned by `active` and sorted by `createdAt`.
+- **Sessions S3 Bucket** - stores conversation artifacts from the Marketing Agent's S3 hook. EventBridge enabled, server access logging to the access logs bucket.
+- **SQL Results S3 Bucket** - stores full SQL result sets uploaded by the Databricks MCP Server when results are truncated. CORS enabled for GET requests.
+- **Access Logs S3 Bucket** - server access logs for the other buckets.
 
 All buckets enforce SSL, block public access, and disable public read.
 
@@ -37,11 +37,11 @@ All buckets enforce SSL, block public access, and disable public read.
 
 Creates the AgentCore MCP Gateway (`marketer-gateway`) with IAM-based authorization and three Lambda targets:
 
-- **DatabricksTarget** ([`gateway/databricks.ts`](../../packages/infra/src/constructs/gateway/databricks.ts)) — Lambda (Node.js 22.x, 60s timeout, 256MB) with Secrets Manager secret for Databricks credentials (URL + PAT). Granted read access to the secret and put access to the SQL results bucket. Registers 8 tools with the gateway.
+- **DatabricksTarget** ([`gateway/databricks.ts`](../../packages/infra/src/constructs/gateway/databricks.ts)) - Lambda (Node.js 22.x, 60s timeout, 256MB) with Secrets Manager secret for Databricks credentials (URL + PAT). Granted read access to the secret and put access to the SQL results bucket. Registers 8 tools with the gateway.
 
-- **ClevertapTarget** ([`gateway/clevertap.ts`](../../packages/infra/src/constructs/gateway/clevertap.ts)) — Lambda (Node.js 22.x, 30s timeout, 256MB) with Secrets Manager secret for CleverTap credentials (projectId, passcode, region). Registers 6 tools with the gateway.
+- **ClevertapTarget** ([`gateway/clevertap.ts`](../../packages/infra/src/constructs/gateway/clevertap.ts)) - Lambda (Node.js 22.x, 30s timeout, 256MB) with Secrets Manager secret for CleverTap credentials (projectId, passcode, region). Registers 6 tools with the gateway.
 
-- **TalonOneTarget** ([`gateway/talonone.ts`](../../packages/infra/src/constructs/gateway/talonone.ts)) — Lambda (Node.js 22.x, 30s timeout, 256MB) with Secrets Manager secret for TalonOne credentials (baseUrl, applicationId, managementKey, integrationKey). Registers 11 tools with the gateway.
+- **TalonOneTarget** ([`gateway/talonone.ts`](../../packages/infra/src/constructs/gateway/talonone.ts)) - Lambda (Node.js 22.x, 30s timeout, 256MB) with Secrets Manager secret for TalonOne credentials (baseUrl, applicationId, managementKey, integrationKey). Registers 11 tools with the gateway.
 
 Each target defines its tool schemas inline using `agentcore.ToolSchema.fromInline()`.
 
@@ -51,11 +51,11 @@ Each target defines its tool schemas inline using `agentcore.ToolSchema.fromInli
 
 Deploys all four agents and a shared memory resource:
 
-- **AgentCore Memory** (`marketer_memory`) — short-term conversational memory used by the Marketing Agent.
-- **DatabricksAgentConstruct** ([`agents/databricks.ts`](../../packages/infra/src/constructs/agents/databricks.ts)) — deploys the Databricks Agent container with an execution role granting Bedrock model invocation, SSM parameter read, and gateway invocation.
-- **ClevertapAgentConstruct** ([`agents/clevertap.ts`](../../packages/infra/src/constructs/agents/clevertap.ts)) — same pattern as Databricks.
-- **TalononeAgentConstruct** ([`agents/talonone.ts`](../../packages/infra/src/constructs/agents/talonone.ts)) — same pattern as Databricks.
-- **MarketerAgentConstruct** ([`agents/marketer.ts`](../../packages/infra/src/constructs/agents/marketer.ts)) — deploys the Marketing Agent with additional permissions: memory full access, S3 read/write for the sessions bucket, and invoke + GetAgentCard for all three worker agent runtimes.
+- **AgentCore Memory** (`marketer_memory`) - short-term conversational memory used by the Marketing Agent.
+- **DatabricksAgentConstruct** ([`agents/databricks.ts`](../../packages/infra/src/constructs/agents/databricks.ts)) - deploys the Databricks Agent container with an execution role granting Bedrock model invocation, SSM parameter read, and gateway invocation.
+- **ClevertapAgentConstruct** ([`agents/clevertap.ts`](../../packages/infra/src/constructs/agents/clevertap.ts)) - same pattern as Databricks.
+- **TalononeAgentConstruct** ([`agents/talonone.ts`](../../packages/infra/src/constructs/agents/talonone.ts)) - same pattern as Databricks.
+- **MarketerAgentConstruct** ([`agents/marketer.ts`](../../packages/infra/src/constructs/agents/marketer.ts)) - deploys the Marketing Agent with additional permissions: memory full access, S3 read/write for the sessions bucket, and invoke + GetAgentCard for all three worker agent runtimes.
 
 Each agent construct creates an IAM execution role assumed by `bedrock-agentcore.amazonaws.com` with inline policies for Bedrock model access and SSM parameter read.
 
@@ -91,11 +91,11 @@ Seeds default agent configuration (model ID, system prompt) into SSM Parameter S
 
 Shared CDK constructs used across the infrastructure:
 
-- **Api** — reusable API Gateway construct with Cognito authorizer, CORS configuration, and WAF integration.
-- **WebUi** — static website deployment to S3 with CloudFront distribution.
-- **UserIdentity** — Cognito user pool and identity pool setup.
-- **MarketerAgent / DatabricksAgent / ClevertapAgent / TalononeAgent** — agent container constructs that handle Docker image building and AgentCore Runtime registration.
-- **suppressRules** — utility for suppressing Checkov security rules with documented justifications.
+- **Api** - reusable API Gateway construct with Cognito authorizer, CORS configuration, and WAF integration.
+- **WebUi** - static website deployment to S3 with CloudFront distribution.
+- **UserIdentity** - Cognito user pool and identity pool setup.
+- **MarketerAgent / DatabricksAgent / ClevertapAgent / TalononeAgent** - agent container constructs that handle Docker image building and AgentCore Runtime registration.
+- **suppressRules** - utility for suppressing Checkov security rules with documented justifications.
 
 ## Deployment Configuration
 
@@ -103,6 +103,6 @@ Shared CDK constructs used across the infrastructure:
 
 Defines TypeScript interfaces for deployment configuration:
 
-- `IDeploymentConfig` — top-level config including admin user, MCP credentials, parameter prefix, and default agent settings.
-- `IMcpConfig` — credentials for Databricks, CleverTap, and TalonOne.
-- `IRuntimeConfig` — runtime configuration passed to the Web UI (API URL, Cognito props).
+- `IDeploymentConfig` - top-level config including admin user, MCP credentials, parameter prefix, and default agent settings.
+- `IMcpConfig` - credentials for Databricks, CleverTap, and TalonOne.
+- `IRuntimeConfig` - runtime configuration passed to the Web UI (API URL, Cognito props).

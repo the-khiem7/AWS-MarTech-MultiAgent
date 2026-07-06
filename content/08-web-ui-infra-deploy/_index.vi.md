@@ -8,7 +8,7 @@ pre: " <b> 8. </b> "
 
 ## Web UI
 
-Web UI là một single-page application React/TypeScript cung cấp giao diện người dùng cho quản lý chiến dịch và tương tác agent. Nó sử dụng **Cloudscape Design System** — design language mã nguồn mở của AWS — cho trải nghiệm chất lượng console.
+Web UI là một single-page application React/TypeScript cung cấp giao diện người dùng cho quản lý chiến dịch và tương tác agent. Nó sử dụng **Cloudscape Design System** - design language mã nguồn mở của AWS - cho trải nghiệm chất lượng console.
 
 ### Technology Stack
 
@@ -47,10 +47,10 @@ Core interaction component ([`src/components/Chat/`](../../packages/web-ui/src/c
 - Tải lịch sử hội thoại từ `GET /chat/:sessionId` khi mount
 - Gửi tin nhắn qua `PUT /chat` và xử lý SSE stream theo thời gian thực
 - Render bốn loại content block:
-  - **Text** — Markdown qua `react-markdown` + `remark-gfm`
-  - **Tool use** — Panel mở rộng hiển thị tên tool và input
-  - **Tool result** — Panel mở rộng hiển thị output của tool
-  - **Subagent progress** — Gắn vào parent tool use, hiển thị streaming từ worker agent
+  - **Text** - Markdown qua `react-markdown` + `remark-gfm`
+  - **Tool use** - Panel mở rộng hiển thị tên tool và input
+  - **Tool result** - Panel mở rộng hiển thị output của tool
+  - **Subagent progress** - Gắn vào parent tool use, hiển thị streaming từ worker agent
 - Sử dụng Cloudscape `ChatBubble`, `Avatar`, `LoadingBar`, `PromptInput`
 
 ### API Client
@@ -120,14 +120,14 @@ Chỉ những integration bạn sử dụng mới cần cấu hình. Những cá
 
 ### StorageAndData
 
-- **Campaigns Table** — Partition key `id` (String), PAY_PER_REQUEST, point-in-time recovery. GSI `CampaignActiveIndex` phân vùng bởi `active`, sắp xếp bởi `createdAt`.
-- **Sessions Bucket** — Lưu output của S3 artifact hooks. EventBridge enabled, server access logging.
-- **SQL Results Bucket** — Lưu bộ SQL results đầy đủ từ Databricks MCP Server. CORS enabled cho GET.
-- **Access Logs Bucket** — Server access logs cho các bucket khác.
+- **Campaigns Table** - Partition key `id` (String), PAY_PER_REQUEST, point-in-time recovery. GSI `CampaignActiveIndex` phân vùng bởi `active`, sắp xếp bởi `createdAt`.
+- **Sessions Bucket** - Lưu output của S3 artifact hooks. EventBridge enabled, server access logging.
+- **SQL Results Bucket** - Lưu bộ SQL results đầy đủ từ Databricks MCP Server. CORS enabled cho GET.
+- **Access Logs Bucket** - Server access logs cho các bucket khác.
 
 Tất cả buckets bắt buộc SSL và chặn public access.
 
-### APIConstruct — 9 Lambda Handlers
+### APIConstruct - 9 Lambda Handlers
 
 | Handler | Route | Timeout | IAM Permissions |
 |---------|-------|---------|-----------------|

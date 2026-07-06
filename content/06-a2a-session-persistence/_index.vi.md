@@ -46,10 +46,10 @@ IAM execution role của Marketing Agent cấp quyền rõ ràng:
 - `bedrock-agentcore:InvokeAgentRuntime` trên ARN của từng worker
 - `bedrock-agentcore:GetAgentCard` trên ARN của từng worker
 
-Không agent nào khác có thể gọi agent khác — chỉ orchestrator có quyền A2A.
+Không agent nào khác có thể gọi agent khác - chỉ orchestrator có quyền A2A.
 
 {{% notice tip %}}
-`stream_a2a_agent` xử lý toàn bộ quy trình bắt tay A2A — ký SigV4, thiết lập kết nối, và phân tích SSE events — bạn chỉ cần ARN và region của agent đích.
+`stream_a2a_agent` xử lý toàn bộ quy trình bắt tay A2A - ký SigV4, thiết lập kết nối, và phân tích SSE events - bạn chỉ cần ARN và region của agent đích.
 {{% /notice %}}
 
 ---
@@ -145,4 +145,4 @@ Streaming handler của Marketing Agent phát ra bốn loại SSE event mà Web 
 | `tool_result` | `{ name: "...", status: "...", output: "..." }` | Khi một tool hoàn thành |
 | `subagent_progress` | `{ agent: "...", content: "..." }` | Streaming trung gian từ worker agent |
 
-Chat component trong Web UI render mỗi loại khác nhau — text với Markdown, tool use/results dưới dạng panel mở rộng, và subagent progress gắn vào parent tool use block.
+Chat component trong Web UI render mỗi loại khác nhau - text với Markdown, tool use/results dưới dạng panel mở rộng, và subagent progress gắn vào parent tool use block.

@@ -46,10 +46,10 @@ The Marketing Agent's IAM execution role explicitly grants:
 - `bedrock-agentcore:InvokeAgentRuntime` on each worker's ARN
 - `bedrock-agentcore:GetAgentCard` on each worker's ARN
 
-No other agent can call another — only the orchestrator has A2A permissions.
+No other agent can call another - only the orchestrator has A2A permissions.
 
 {{% notice tip %}}
-`stream_a2a_agent` handles the entire A2A handshake — SigV4 signing, connection establishment, and SSE event parsing — so you only need the target agent's ARN and region.
+`stream_a2a_agent` handles the entire A2A handshake - SigV4 signing, connection establishment, and SSE event parsing - so you only need the target agent's ARN and region.
 {{% /notice %}}
 
 ---
@@ -145,4 +145,4 @@ The Marketing Agent's streaming handler emits four SSE event types that the Web 
 | `tool_result` | `{ name: "...", status: "...", output: "..." }` | When a tool completes |
 | `subagent_progress` | `{ agent: "...", content: "..." }` | Intermediate streaming from worker agents |
 
-The Chat component in the Web UI renders each type differently — text with Markdown support, tool use/results as expandable panels, and subagent progress attached to the parent tool use block.
+The Chat component in the Web UI renders each type differently - text with Markdown support, tool use/results as expandable panels, and subagent progress attached to the parent tool use block.

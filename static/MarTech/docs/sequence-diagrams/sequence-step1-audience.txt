@@ -1,4 +1,4 @@
-title: Step 1 — Define Target Audience
+title: Step 1 - Define Target Audience
 
 Web UI -> API Handler: User sends prompt
 API Handler -> Marketing Agent: Invoke via AgentCore Runtime

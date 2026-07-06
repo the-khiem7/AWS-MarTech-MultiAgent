@@ -8,7 +8,7 @@ pre: " <b> 8. </b> "
 
 ## Web UI
 
-The Web UI is a React/TypeScript single-page application that provides the user-facing interface for campaign management and agent interaction. It uses the **Cloudscape Design System** — AWS's open-source design language — for a console-quality experience.
+The Web UI is a React/TypeScript single-page application that provides the user-facing interface for campaign management and agent interaction. It uses the **Cloudscape Design System** - AWS's open-source design language - for a console-quality experience.
 
 ### Technology Stack
 
@@ -47,10 +47,10 @@ The core interaction component ([`src/components/Chat/`](../../packages/web-ui/s
 - Loads conversation history from `GET /chat/:sessionId` on mount
 - Sends messages via `PUT /chat` and processes the SSE stream in real-time
 - Renders four content block types:
-  - **Text** — Markdown via `react-markdown` + `remark-gfm`
-  - **Tool use** — Expandable panel showing tool name and input
-  - **Tool result** — Expandable panel showing tool output
-  - **Subagent progress** — Attached to parent tool use, shows worker agent streaming
+  - **Text** - Markdown via `react-markdown` + `remark-gfm`
+  - **Tool use** - Expandable panel showing tool name and input
+  - **Tool result** - Expandable panel showing tool output
+  - **Subagent progress** - Attached to parent tool use, shows worker agent streaming
 - Uses Cloudscape `ChatBubble`, `Avatar`, `LoadingBar`, `PromptInput` components
 
 ### API Client
@@ -120,14 +120,14 @@ The `ApplicationStack` instantiates 7 constructs in order:
 
 ### StorageAndData
 
-- **Campaigns Table** — Partition key `id` (String), PAY_PER_REQUEST, point-in-time recovery. GSI `CampaignActiveIndex` partitioned by `active`, sorted by `createdAt`.
-- **Sessions Bucket** — Stores S3 artifact hooks output. EventBridge enabled, server access logging.
-- **SQL Results Bucket** — Stores full SQL result sets from Databricks MCP Server. CORS enabled for GET.
-- **Access Logs Bucket** — Server access logs for the other buckets.
+- **Campaigns Table** - Partition key `id` (String), PAY_PER_REQUEST, point-in-time recovery. GSI `CampaignActiveIndex` partitioned by `active`, sorted by `createdAt`.
+- **Sessions Bucket** - Stores S3 artifact hooks output. EventBridge enabled, server access logging.
+- **SQL Results Bucket** - Stores full SQL result sets from Databricks MCP Server. CORS enabled for GET.
+- **Access Logs Bucket** - Server access logs for the other buckets.
 
 All buckets enforce SSL and block public access.
 
-### APIConstruct — 9 Lambda Handlers
+### APIConstruct - 9 Lambda Handlers
 
 | Handler | Route | Timeout | IAM Permissions |
 |---------|-------|---------|-----------------|

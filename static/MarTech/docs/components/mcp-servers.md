@@ -10,9 +10,9 @@ The prototype provides three custom-built Model Context Protocol (MCP) servers i
 
 [`packages/api/src/handlers/mcp/utils/index.ts`](../../packages/api/src/handlers/mcp/utils/index.ts)
 
-- `extractToolName(fullToolName)` — strips the gateway target prefix from tool names. The gateway uses the format `{target_name}___{tool_name}` (three underscores).
-- `getSecret<T>(secretArn)` — fetches and caches a JSON secret from Secrets Manager. Results are cached for the lifetime of the Lambda execution context.
-- `GatewayContext` — TypeScript interface for the AgentCore Gateway invocation context, including tool name, message version, request ID, gateway ID, and target ID.
+- `extractToolName(fullToolName)` - strips the gateway target prefix from tool names. The gateway uses the format `{target_name}___{tool_name}` (three underscores).
+- `getSecret<T>(secretArn)` - fetches and caches a JSON secret from Secrets Manager. Results are cached for the lifetime of the Lambda execution context.
+- `GatewayContext` - TypeScript interface for the AgentCore Gateway invocation context, including tool name, message version, request ID, gateway ID, and target ID.
 
 ## Databricks MCP Server
 
@@ -24,8 +24,8 @@ Implements Databricks API calls via the SQL Statement Execution, SQL Warehouses,
 
 **Environment variables:**
 
-- `DATABRICKS_SECRET_ARN` — Secrets Manager ARN for Databricks credentials
-- `SQL_RESULTS_BUCKET` — S3 bucket for uploading large SQL results
+- `DATABRICKS_SECRET_ARN` - Secrets Manager ARN for Databricks credentials
+- `SQL_RESULTS_BUCKET` - S3 bucket for uploading large SQL results
 
 **Tools (8):**
 
@@ -52,7 +52,7 @@ Implements CleverTap campaign management via the CleverTap Targets API.
 
 **Environment variables:**
 
-- `CLEVERTAP_SECRET_ARN` — Secrets Manager ARN for CleverTap credentials
+- `CLEVERTAP_SECRET_ARN` - Secrets Manager ARN for CleverTap credentials
 
 **Tools (6):**
 
@@ -79,7 +79,7 @@ Implements TalonOne campaign, loyalty, and coupon management via both the Manage
 
 **Environment variables:**
 
-- `TALONONE_SECRET_ARN` — Secrets Manager ARN for TalonOne credentials
+- `TALONONE_SECRET_ARN` - Secrets Manager ARN for TalonOne credentials
 
 **Tools (11):**
 

@@ -16,7 +16,7 @@ Nền tảng MarTech áp dụng kiến trúc phân lớp, nơi bốn AI agent ch
 
 | Agent | Vai Trò | Khả Năng Chính | Runtime |
 |-------|------|-----------------|---------|
-| **Marketing Agent** | Điều phối — thực thi workflow 3 bước, thu thập xác nhận người dùng | A2A delegation, SSE streaming, S3 artifact hooks, AgentCore Memory | Custom FastAPI + Strands |
+| **Marketing Agent** | Điều phối - thực thi workflow 3 bước, thu thập xác nhận người dùng | A2A delegation, SSE streaming, S3 artifact hooks, AgentCore Memory | Custom FastAPI + Strands |
 | **Databricks Agent** | Phân tích dữ liệu và phân khúc khán giả | 8 MCP tools (SQL, Unity Catalog, Jobs) | A2A Server (Strands) |
 | **CleverTap Agent** | Quản lý vòng đời chiến dịch | 6 MCP tools (draft, confirm, list, update, discard) | A2A Server (Strands) |
 | **TalonOne Agent** | Khuyến mãi, coupon, loyalty | 11 MCP tools (campaigns, coupons, loyalty, sessions) | A2A Server (Strands) |
@@ -70,10 +70,10 @@ Hai mô hình giao tiếp kết nối bốn agent:
 {{< tab name="MCP Gateway" >}}
 Mỗi platform agent (Databricks, CleverTap, TalonOne) truy cập tools qua **AgentCore MCP Gateway**. Gateway:
 
-- Xác thực bằng **IAM SigV4** — không cần quản lý API key
+- Xác thực bằng **IAM SigV4** - không cần quản lý API key
 - Định tuyến đến **Lambda-based MCP server** tương ứng dựa trên tên tool
 - Lọc tools theo prefix (`databricks-target___execute_sql` → `execute_sql`)
-- Cô lập logic agent khỏi thay đổi hạ tầng — cập nhật Lambda mà không cần sửa code agent
+- Cô lập logic agent khỏi thay đổi hạ tầng - cập nhật Lambda mà không cần sửa code agent
 
 Credentials cho mỗi nền tảng bên thứ ba được lưu trong **AWS Secrets Manager** và inject vào môi trường thực thi Lambda.
 {{< /tab >}}
@@ -82,9 +82,9 @@ Credentials cho mỗi nền tảng bên thứ ba được lưu trong **AWS Secre
 **Marketing Agent** giao tiếp với platform agent qua **A2A**, coi mỗi sub-agent như một remote tool. A2A cung cấp:
 
 - **Streaming xác thực SigV4** qua SSE events (4 loại event: text, tool_use, tool_result, subagent_progress)
-- **Truyền Session ID** — cùng một session chảy qua tất cả agent, cho phép lưu trữ S3 artifact thống nhất và ngữ cảnh AgentCore Memory
-- **Báo cáo tiến độ** — cập nhật trung gian từ worker agent stream về UI theo thời gian thực
-- **IAM access control** — execution role của Marketing Agent cấp quyền `InvokeAgentRuntime` và `GetAgentCard` cho từng worker agent
+- **Truyền Session ID** - cùng một session chảy qua tất cả agent, cho phép lưu trữ S3 artifact thống nhất và ngữ cảnh AgentCore Memory
+- **Báo cáo tiến độ** - cập nhật trung gian từ worker agent stream về UI theo thời gian thực
+- **IAM access control** - execution role của Marketing Agent cấp quyền `InvokeAgentRuntime` và `GetAgentCard` cho từng worker agent
 {{< /tab >}}
 
 {{< /tabs >}}

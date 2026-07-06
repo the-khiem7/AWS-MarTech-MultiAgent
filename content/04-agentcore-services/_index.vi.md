@@ -28,7 +28,7 @@ Nền tảng MarTech triển khai **bốn AgentCore Runtime** qua CDK construct 
 Mỗi agent construct tạo một IAM execution role được assume bởi `bedrock-agentcore.amazonaws.com` với inline policies được giới hạn theo nhu cầu cụ thể của từng agent.
 
 {{% notice tip %}}
-Dùng SigV4 thay vì API key có nghĩa là agent của bạn không bao giờ phải quản lý hoặc xoay vòng credentials thủ công — IAM xử lý tự động.
+Dùng SigV4 thay vì API key có nghĩa là agent của bạn không bao giờ phải quản lý hoặc xoay vòng credentials thủ công - IAM xử lý tự động.
 {{% /notice %}}
 
 ---
@@ -115,4 +115,4 @@ Databricks MCP server có xử lý đặc biệt cho kết quả lớn: SQL resu
 | Bộ Nhớ | AgentCore Memory | Memory dùng chung cho Marketing Agent session context |
 | Tools | AgentCore MCP Gateway | 3 Lambda targets cung cấp 25 tools với IAM auth |
 
-Sự phân tách này cho phép mỗi lớp phát triển độc lập — cập nhật Lambda tool mà không cần sửa code agent, đổi model mà không cần thay đổi hạ tầng, hoặc thêm platform agent mới mà không ảnh hưởng đến các agent hiện có.
+Sự phân tách này cho phép mỗi lớp phát triển độc lập - cập nhật Lambda tool mà không cần sửa code agent, đổi model mà không cần thay đổi hạ tầng, hoặc thêm platform agent mới mà không ảnh hưởng đến các agent hiện có.

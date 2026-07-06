@@ -12,7 +12,7 @@ home = ["HTML", "RSS", "JSON"]
 [params]
 themeVariant = "workshop"
 editURL = ""
-description = "Hands-on workshop: Agentic AI for MarTech — build a multi-agent marketing platform with AWS AgentCore."
+description = "Hands-on workshop: Agentic AI for MarTech - build a multi-agent marketing platform with AWS AgentCore."
 author = "AWS BuildDay"
 showVisitedLinks = true
 disableBreadcrumb = false

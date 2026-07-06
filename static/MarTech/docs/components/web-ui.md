@@ -21,11 +21,11 @@ The Web UI is a React/TypeScript single-page application that provides the user-
 
 The application is wrapped in the following provider hierarchy:
 
-1. **I18nProvider** — Cloudscape internationalization (English)
-2. **RuntimeConfigProvider** — loads runtime configuration (API URL, Cognito props) from a JSON file deployed alongside the app
-3. **CognitoAuth** — OIDC authentication via `react-oidc-context`
-4. **QueryClientProvider** — React Query for data fetching
-5. **ApiClientProvider** — provides the API client instance via React context
+1. **I18nProvider** - Cloudscape internationalization (English)
+2. **RuntimeConfigProvider** - loads runtime configuration (API URL, Cognito props) from a JSON file deployed alongside the app
+3. **CognitoAuth** - OIDC authentication via `react-oidc-context`
+4. **QueryClientProvider** - React Query for data fetching
+5. **ApiClientProvider** - provides the API client instance via React context
 
 ## Routes
 
@@ -116,12 +116,12 @@ Returns a `fetch`-compatible function that signs requests with AWS SigV4 using t
 
 A shared API client used by the Web UI. Uses `aws4fetch` for SigV4-signed requests. Provides typed methods for:
 
-- `campaign.get(id)` — GET /campaign/:id
-- `campaign.list({ pageSize, nextToken })` — GET /campaign
-- `campaign.create({ name })` — POST /campaign
-- `chat.put({ sessionId, prompt }, onChunk)` — PUT /chat (streaming)
-- `chat.getHistory(sessionId)` — GET /chat/:sessionId
-- `configuration.get(agentName)` — GET /configuration/:agentName
-- `configuration.put(agentName, config)` — PUT /configuration/:agentName
-- `configuration.listModels()` — GET /configuration/models
-- `sqlResult.get(key)` — GET /sql-result/:key
+- `campaign.get(id)` - GET /campaign/:id
+- `campaign.list({ pageSize, nextToken })` - GET /campaign
+- `campaign.create({ name })` - POST /campaign
+- `chat.put({ sessionId, prompt }, onChunk)` - PUT /chat (streaming)
+- `chat.getHistory(sessionId)` - GET /chat/:sessionId
+- `configuration.get(agentName)` - GET /configuration/:agentName
+- `configuration.put(agentName, config)` - PUT /configuration/:agentName
+- `configuration.listModels()` - GET /configuration/models
+- `sqlResult.get(key)` - GET /sql-result/:key

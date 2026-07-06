@@ -12,8 +12,8 @@ The [`packages/agents/common/`](../../packages/agents/common/) package provides 
 
 Provides a reusable factory for creating FastAPI applications that serve Strands agents over the A2A protocol:
 
-- `create_a2a_app(agent_factory)` — accepts a callable that returns a configured Strands Agent. Creates a Strands `A2AServer`, mounts it on a FastAPI app, and adds a `/ping` health check endpoint. The runtime URL is read from the `AGENTCORE_RUNTIME_URL` environment variable (defaults to `http://127.0.0.1:9000/`).
-- `run_a2a_server(agent_factory)` — convenience function that creates the app and runs it with uvicorn on `0.0.0.0:9000`.
+- `create_a2a_app(agent_factory)` - accepts a callable that returns a configured Strands Agent. Creates a Strands `A2AServer`, mounts it on a FastAPI app, and adds a `/ping` health check endpoint. The runtime URL is read from the `AGENTCORE_RUNTIME_URL` environment variable (defaults to `http://127.0.0.1:9000/`).
+- `run_a2a_server(agent_factory)` - convenience function that creates the app and runs it with uvicorn on `0.0.0.0:9000`.
 
 Used by the Databricks, CleverTap, and TalonOne agents. The Marketing Agent uses a custom server implementation instead.
 
@@ -23,13 +23,13 @@ Used by the Databricks, CleverTap, and TalonOne agents. The Marketing Agent uses
 
 Factory for creating MCP clients that connect to the AgentCore Gateway:
 
-- `get_gateway_mcp_client(target_name)` — creates a Strands `MCPClient` that connects to the gateway via streamable HTTP with SigV4 authentication. Tools are filtered by a regex pattern matching `{target_name}___` to ensure each agent only sees its own tools.
-- `SigV4HTTPXAuth` — HTTPX auth class that signs requests with AWS SigV4 for the `bedrock-agentcore` service. Adds the `x-amz-content-sha256` header required by the gateway.
+- `get_gateway_mcp_client(target_name)` - creates a Strands `MCPClient` that connects to the gateway via streamable HTTP with SigV4 authentication. Tools are filtered by a regex pattern matching `{target_name}___` to ensure each agent only sees its own tools.
+- `SigV4HTTPXAuth` - HTTPX auth class that signs requests with AWS SigV4 for the `bedrock-agentcore` service. Adds the `x-amz-content-sha256` header required by the gateway.
 
 Environment variables:
 
-- `GATEWAY_URL` — AgentCore MCP Gateway URL
-- `AWS_REGION` — AWS region (defaults to `us-east-1`)
+- `GATEWAY_URL` - AgentCore MCP Gateway URL
+- `AWS_REGION` - AWS region (defaults to `us-east-1`)
 
 ## Configuration Loader
 
@@ -37,12 +37,12 @@ Environment variables:
 
 Loads agent configuration from AWS SSM Parameter Store:
 
-- `load_configuration()` — reads the `AGENT_CONFIG_PARAMETER` environment variable to find the SSM parameter name, fetches the JSON value, and returns it as a dict. Returns an empty dict if the parameter is not set, not found, or fails to load. The SSM client is lazily initialized and reused.
+- `load_configuration()` - reads the `AGENT_CONFIG_PARAMETER` environment variable to find the SSM parameter name, fetches the JSON value, and returns it as a dict. Returns an empty dict if the parameter is not set, not found, or fails to load. The SSM client is lazily initialized and reused.
 
 The returned config dict typically contains:
 
-- `modelId` — Bedrock model ID or inference profile ID
-- `systemPrompt` — custom system prompt override
+- `modelId` - Bedrock model ID or inference profile ID
+- `systemPrompt` - custom system prompt override
 
 ## SigV4 Auth (Marketing Agent)
 

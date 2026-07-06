@@ -86,7 +86,7 @@ System prompt của agent hướng dẫn:
 ### Workflow Draft-First
 
 1. Thu thập thông tin cần thiết: name, channel, content, và `user_property_filters`
-2. Luôn `create_draft_campaign` trước — không bao giờ gửi mà không có bản nháp
+2. Luôn `create_draft_campaign` trước - không bao giờ gửi mà không có bản nháp
 3. Trình bày phạm vi ước tính và yêu cầu xác nhận
 4. Nếu xác nhận → `confirm_draft_campaign`; nếu cần thay đổi → `update_draft_campaign`
 5. Nếu hủy → `discard_draft_campaign`
@@ -134,10 +134,10 @@ Tất cả agent chia sẻ các Python utility trong `packages/agents/common/com
 
 | Module | Mục Đích |
 |--------|---------|
-| `a2a_server.py` | `create_a2a_app()` factory — bọc Strands Agent trong A2A Server với FastAPI |
-| `gateway.py` | `get_gateway_mcp_client(target_name)` — tạo MCP client với xác thực SigV4 và lọc tool theo prefix |
-| `config.py` | `load_configuration()` — đọc agent config (modelId, systemPrompt) từ SSM Parameter Store |
-| `s3_artifact.py` | `S3ArtifactHook` — ghi tin nhắn hội thoại vào S3 để audit |
+| `a2a_server.py` | `create_a2a_app()` factory - bọc Strands Agent trong A2A Server với FastAPI |
+| `gateway.py` | `get_gateway_mcp_client(target_name)` - tạo MCP client với xác thực SigV4 và lọc tool theo prefix |
+| `config.py` | `load_configuration()` - đọc agent config (modelId, systemPrompt) từ SSM Parameter Store |
+| `s3_artifact.py` | `S3ArtifactHook` - ghi tin nhắn hội thoại vào S3 để audit |
 
 {{% notice tip %}}
 Marketing Agent dùng custom FastAPI server với endpoint `/invocations` (yêu cầu bởi AgentCore Runtime) thay vì shared `create_a2a_app` factory, vì nó hoạt động như orchestrator chứ không phải worker.

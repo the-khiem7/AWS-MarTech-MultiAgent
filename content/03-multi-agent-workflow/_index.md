@@ -6,9 +6,9 @@ chapter: false
 pre: " <b> 3. </b> "
 ---
 
-The Marketing Agent enforces a strict three-step campaign creation workflow. The user must confirm each step before proceeding — the agent refuses to help with anything outside this workflow.
+The Marketing Agent enforces a strict three-step campaign creation workflow. The user must confirm each step before proceeding - the agent refuses to help with anything outside this workflow.
 
-## Step 1 — Define Target Audience
+## Step 1 - Define Target Audience
 
 {{< mermaid >}}
 sequenceDiagram
@@ -43,13 +43,13 @@ The **Databricks Agent** handles this step using 8 MCP tools:
 | `run_job` | Trigger a Databricks job |
 | `get_job_run` | Check job run status |
 
-**Workflow**: The agent explores available data sources, constructs and executes SQL queries, and presents audience segments. SQL results exceeding 20 rows or 10KB are uploaded to S3 as JSON — the agent informs the user about the download location.
+**Workflow**: The agent explores available data sources, constructs and executes SQL queries, and presents audience segments. SQL results exceeding 20 rows or 10KB are uploaded to S3 as JSON - the agent informs the user about the download location.
 
 {{% notice info %}}
 This is the most conversation-intensive step. A real session logged 26 messages between the user, Marketing Agent, and Databricks Agent before reaching audience confirmation.
 {{% /notice %}}
 
-## Step 2 — Create Campaign in CleverTap
+## Step 2 - Create Campaign in CleverTap
 
 {{< mermaid >}}
 sequenceDiagram
@@ -87,7 +87,7 @@ The **CleverTap Agent** enforces a draft-first workflow:
 The agent **always** creates a draft first. It never creates a campaign directly without user confirmation of the estimated reach.
 {{% /notice %}}
 
-## Step 3 — Create Promotion in TalonOne (Optional)
+## Step 3 - Create Promotion in TalonOne (Optional)
 
 {{< mermaid >}}
 sequenceDiagram
@@ -125,6 +125,6 @@ While the user sees a simple chat, three critical mechanisms run invisibly:
 
 1. **AgentCore Memory** retains conversation context between messages, so the Marketing Agent remembers which step the user is on and what was previously confirmed.
 
-2. **Session ID Propagation** — the same session ID flows from the Web UI → Put Chat Lambda → Marketing Agent → A2A calls → Worker Agents → S3. All four agents write to the same S3 folder.
+2. **Session ID Propagation** - the same session ID flows from the Web UI → Put Chat Lambda → Marketing Agent → A2A calls → Worker Agents → S3. All four agents write to the same S3 folder.
 
-3. **SSE Streaming** — the Marketing Agent emits four event types (`text`, `tool_use`, `tool_result`, `subagent_progress`) that the Web UI renders in real-time, giving the user visibility into tool invocations and intermediate agent reasoning.
+3. **SSE Streaming** - the Marketing Agent emits four event types (`text`, `tool_use`, `tool_result`, `subagent_progress`) that the Web UI renders in real-time, giving the user visibility into tool invocations and intermediate agent reasoning.

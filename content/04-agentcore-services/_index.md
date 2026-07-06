@@ -28,7 +28,7 @@ The MarTech platform deploys **four AgentCore Runtimes** via the `AgentConstruct
 Each agent construct creates an IAM execution role assumed by `bedrock-agentcore.amazonaws.com` with inline policies scoped to the specific agent's needs.
 
 {{% notice tip %}}
-Using SigV4 authentication instead of API keys means your agents never need to manage or rotate credentials manually — IAM handles it automatically.
+Using SigV4 authentication instead of API keys means your agents never need to manage or rotate credentials manually - IAM handles it automatically.
 {{% /notice %}}
 
 ---
@@ -115,4 +115,4 @@ The Databricks MCP server has special handling for large results: SQL results ex
 | Memory | AgentCore Memory | Shared memory for Marketing Agent session context |
 | Tools | AgentCore MCP Gateway | 3 Lambda targets exposing 25 tools with IAM auth |
 
-This separation allows each layer to evolve independently — update a Lambda tool without touching agent code, swap the model without changing infrastructure, or add a new platform agent without modifying existing ones.
+This separation allows each layer to evolve independently - update a Lambda tool without touching agent code, swap the model without changing infrastructure, or add a new platform agent without modifying existing ones.

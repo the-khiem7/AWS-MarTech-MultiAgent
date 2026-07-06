@@ -25,9 +25,9 @@ Uses the shared `create_a2a_app()` factory from [`common.a2a_server`](../../pack
 
 The `get_talonone_agent()` function creates a Strands Agent with:
 
-- **MCP Gateway client** — connects to the `talonone-target` on the AgentCore Gateway using SigV4-authenticated streamable HTTP.
-- **Built-in tools** — `current_time` from `strands_tools`.
-- **Dynamic configuration** — loads model ID and system prompt from SSM Parameter Store.
+- **MCP Gateway client** - connects to the `talonone-target` on the AgentCore Gateway using SigV4-authenticated streamable HTTP.
+- **Built-in tools** - `current_time` from `strands_tools`.
+- **Dynamic configuration** - loads model ID and system prompt from SSM Parameter Store.
 
 ## Available Tools
 
@@ -58,6 +58,6 @@ The agent has access to eleven tools exposed by the TalonOne MCP Server:
 
 ## Environment Variables
 
-- `GATEWAY_URL` — AgentCore MCP Gateway URL
-- `AGENT_CONFIG_PARAMETER` — SSM parameter name for agent configuration
-- `AWS_REGION` — AWS region
+- `GATEWAY_URL` - AgentCore MCP Gateway URL
+- `AGENT_CONFIG_PARAMETER` - SSM parameter name for agent configuration
+- `AWS_REGION` - AWS region

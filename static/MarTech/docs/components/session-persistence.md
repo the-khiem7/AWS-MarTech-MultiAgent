@@ -27,7 +27,7 @@ Based on a real session (`session-115d83b0-d13a-436b-af69-63e556b601a9`):
             ...
 ```
 
-In this session the user went through Step 1 (audience definition via Databricks — 26 messages of SQL queries and catalog discovery) and Step 2 (campaign creation via CleverTap — 4 messages for draft and confirm). The TalonOne agent was not invoked as the user skipped the optional promotion step.
+In this session the user went through Step 1 (audience definition via Databricks - 26 messages of SQL queries and catalog discovery) and Step 2 (campaign creation via CleverTap - 4 messages for draft and confirm). The TalonOne agent was not invoked as the user skipped the optional promotion step.
 
 ## How Session ID Flows
 

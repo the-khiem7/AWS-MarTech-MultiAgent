@@ -28,10 +28,10 @@ For detailed technical documentation on every component, see the [Technical Docu
 
 Before deploying, update `packages/infra/config/default.yaml` with your environment-specific values:
 
-- `deploymentConfig.adminUser.email` — email for the initial Cognito admin user
-- `deploymentConfig.mcp.databricks.token` and `url` — your Databricks workspace credentials
-- `deploymentConfig.mcp.clevertap.projectId`, `passcode`, and `region` — your CleverTap project credentials
-- `deploymentConfig.mcp.talonone.baseUrl`, `applicationId`, `managementKey`, and `integrationKey` — your TalonOne credentials
+- `deploymentConfig.adminUser.email` - email for the initial Cognito admin user
+- `deploymentConfig.mcp.databricks.token` and `url` - your Databricks workspace credentials
+- `deploymentConfig.mcp.clevertap.projectId`, `passcode`, and `region` - your CleverTap project credentials
+- `deploymentConfig.mcp.talonone.baseUrl`, `applicationId`, `managementKey`, and `integrationKey` - your TalonOne credentials
 
 Only the integrations you plan to use need to be configured. Unused ones can be left empty.
 

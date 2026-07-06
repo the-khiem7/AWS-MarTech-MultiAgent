@@ -1,4 +1,4 @@
-title: Step 2 — Create Campaign
+title: Step 2 - Create Campaign
 
 Web UI -> API Handler: User confirms audience
 API Handler -> Marketing Agent: Invoke via AgentCore Runtime

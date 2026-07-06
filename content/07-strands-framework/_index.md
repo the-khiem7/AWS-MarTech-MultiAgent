@@ -26,7 +26,7 @@ def current_time() -> str:
 
 ### 2. Native MCP Integration
 
-Strands supports MCP clients natively — tools from the MCP Gateway integrate just like local tools:
+Strands supports MCP clients natively - tools from the MCP Gateway integrate just like local tools:
 
 ```python
 from bedrock_agentcore.mcp import get_gateway_mcp_client
@@ -59,9 +59,9 @@ agent = Agent(
 )
 ```
 
-The `load_configuration()` utility in `packages/agents/common/common/config.py` fetches the JSON config from SSM. If the parameter is not set, not found, or fails to load, it returns an empty dict — falling back to coded defaults. This pattern allows prompt engineering changes without any code deployment.
+The `load_configuration()` utility in `packages/agents/common/common/config.py` fetches the JSON config from SSM. If the parameter is not set, not found, or fails to load, it returns an empty dict - falling back to coded defaults. This pattern allows prompt engineering changes without any code deployment.
 
-The Web UI provides a **Configuration page** that lets users select a Bedrock model and customize the system prompt for each agent via `GET /configuration/{agentName}` and `PUT /configuration/{agentName}` — both of which read/write SSM Parameter Store.
+The Web UI provides a **Configuration page** that lets users select a Bedrock model and customize the system prompt for each agent via `GET /configuration/{agentName}` and `PUT /configuration/{agentName}` - both of which read/write SSM Parameter Store.
 
 ### 4. All Model Providers
 
@@ -95,7 +95,7 @@ Strands provides a hook system for intercepting agent lifecycle events:
 | `on_agent_end` | When an agent finishes |
 | `on_model_response` | After each model response |
 
-The MarTech platform registers an `S3ArtifactHook` on each agent's `MessageAddedEvent` to persist all conversation messages to S3. Hooks can also be used for logging, monitoring, cost tracking, and custom business logic — all without modifying the agent's core logic.
+The MarTech platform registers an `S3ArtifactHook` on each agent's `MessageAddedEvent` to persist all conversation messages to S3. Hooks can also be used for logging, monitoring, cost tracking, and custom business logic - all without modifying the agent's core logic.
 
 ## Agent Creation Pattern
 
@@ -105,6 +105,6 @@ Every agent in the MarTech platform follows the same creation pattern:
 |-----------|---------|
 | **Tools** | MCP Gateway client (filtered by target prefix) + built-in `current_time` |
 | **System Prompt** | Loaded dynamically from SSM Parameter Store via `load_configuration()` with coded default fallback |
-| **Model ID** | Configurable at runtime from SSM — the Web UI Configuration page lets users change models without redeployment |
+| **Model ID** | Configurable at runtime from SSM - the Web UI Configuration page lets users change models without redeployment |
 
 This consistency makes the codebase predictable and maintainable across all four agents. The shared utilities in `packages/agents/common/` eliminate code duplication for common concerns: A2A server setup, gateway MCP clients, configuration loading, and S3 artifact hooks.

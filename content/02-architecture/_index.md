@@ -16,7 +16,7 @@ The MarTech platform follows a layered architecture where four specialized AI ag
 
 | Agent | Role | Key Capabilities | Runtime |
 |-------|------|-----------------|---------|
-| **Marketing Agent** | Orchestrator — enforces 3-step workflow, collects user confirmations | A2A delegation, SSE streaming, S3 artifact hooks, AgentCore Memory | Custom FastAPI + Strands |
+| **Marketing Agent** | Orchestrator - enforces 3-step workflow, collects user confirmations | A2A delegation, SSE streaming, S3 artifact hooks, AgentCore Memory | Custom FastAPI + Strands |
 | **Databricks Agent** | Data analytics and audience segmentation | 8 MCP tools (SQL, Unity Catalog, Jobs) | A2A Server (Strands) |
 | **CleverTap Agent** | Campaign lifecycle management | 6 MCP tools (draft, confirm, list, update, discard) | A2A Server (Strands) |
 | **TalonOne Agent** | Promotions, coupons, loyalty | 11 MCP tools (campaigns, coupons, loyalty, sessions) | A2A Server (Strands) |
@@ -70,10 +70,10 @@ Two communication patterns connect the four agents:
 {{< tab name="MCP Gateway" >}}
 Each platform agent (Databricks, CleverTap, TalonOne) accesses its tools via the **AgentCore MCP Gateway**. The gateway:
 
-- Authenticates calls with **IAM SigV4** — no API keys to manage
+- Authenticates calls with **IAM SigV4** - no API keys to manage
 - Routes to the correct **Lambda-based MCP server** based on tool name
 - Filters tools by prefix (`databricks-target___execute_sql` → `execute_sql`)
-- Isolates agent logic from infrastructure changes — update a Lambda without touching agent code
+- Isolates agent logic from infrastructure changes - update a Lambda without touching agent code
 
 Credentials for each third-party platform are stored in **AWS Secrets Manager** and injected into the Lambda execution environment.
 {{< /tab >}}
@@ -82,9 +82,9 @@ Credentials for each third-party platform are stored in **AWS Secrets Manager** 
 The **Marketing Agent** communicates with platform agents via **A2A**, treating each sub-agent as a remote tool. A2A provides:
 
 - **SigV4-authenticated streaming** via SSE events (4 event types: text, tool_use, tool_result, subagent_progress)
-- **Session ID propagation** — the same session flows through all agents, enabling unified S3 artifact storage and AgentCore Memory context
-- **Progress reporting** — intermediate updates from worker agents stream back to the UI in real-time
-- **IAM access control** — the Marketing Agent's execution role explicitly grants `InvokeAgentRuntime` and `GetAgentCard` for each worker agent
+- **Session ID propagation** - the same session flows through all agents, enabling unified S3 artifact storage and AgentCore Memory context
+- **Progress reporting** - intermediate updates from worker agents stream back to the UI in real-time
+- **IAM access control** - the Marketing Agent's execution role explicitly grants `InvokeAgentRuntime` and `GetAgentCard` for each worker agent
 {{< /tab >}}
 
 {{< /tabs >}}

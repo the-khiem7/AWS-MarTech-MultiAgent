@@ -10,9 +10,9 @@ pre: " <b> 1. </b> "
 
 Để triển khai một chiến dịch marketing, marketer phải điều phối trên ba nền tảng rời rạc:
 
-- **Databricks** — truy vấn phân khúc khách hàng, chạy SQL trên data warehouse, khám phá schema và bảng trong Unity Catalog
-- **CleverTap** — quản lý vòng đời chiến dịch: tạo bản nháp, xác thực targeting, xác nhận phân phối qua push, email, SMS, WhatsApp, web push, và webhook
-- **TalonOne** — cấu hình khuyến mãi, coupon, chương trình loyalty, phiên khách hàng, và quản lý chiến dịch giảm giá
+- **Databricks** - truy vấn phân khúc khách hàng, chạy SQL trên data warehouse, khám phá schema và bảng trong Unity Catalog
+- **CleverTap** - quản lý vòng đời chiến dịch: tạo bản nháp, xác thực targeting, xác nhận phân phối qua push, email, SMS, WhatsApp, web push, và webhook
+- **TalonOne** - cấu hình khuyến mãi, coupon, chương trình loyalty, phiên khách hàng, và quản lý chiến dịch giảm giá
 
 Mỗi nền tảng yêu cầu thông tin xác thực riêng, hợp đồng API khác nhau, và chuyên môn theo từng lĩnh vực. Marketer dành nhiều thời gian chuyển đổi giữa các công cụ hơn là thiết kế chiến dịch hiệu quả.
 
@@ -46,10 +46,10 @@ Marketer chỉ cần chat với orchestrator agent bằng ngôn ngữ tự nhiê
 
 ## AWS AgentCore: Nền Tảng
 
-Toàn bộ hệ thống chạy trên **AWS AgentCore** — dịch vụ được thiết kế chuyên biệt để triển khai và vận hành AI agent ở quy mô lớn. Nó cung cấp ba khả năng cốt lõi:
+Toàn bộ hệ thống chạy trên **AWS AgentCore** - dịch vụ được thiết kế chuyên biệt để triển khai và vận hành AI agent ở quy mô lớn. Nó cung cấp ba khả năng cốt lõi:
 
 | Dịch Vụ | Vai Trò Trong Nền Tảng |
 |---------|----------------------|
 | **AgentCore Runtime** | Host cả 4 agent dưới dạng Docker container với auto-scaling, xác thực SigV4, và observability tích hợp |
 | **AgentCore Memory** | Lưu trữ ngữ cảnh hội thoại qua các tin nhắn, cho phép Marketing Agent nhớ các quyết định trước trong chiến dịch dài hạn |
-| **AgentCore MCP Gateway** | Định tuyến tool call từ agent đến 3 MCP server Lambda-based với xác thực IAM — tách biệt logic agent khỏi hạ tầng |
+| **AgentCore MCP Gateway** | Định tuyến tool call từ agent đến 3 MCP server Lambda-based với xác thực IAM - tách biệt logic agent khỏi hạ tầng |

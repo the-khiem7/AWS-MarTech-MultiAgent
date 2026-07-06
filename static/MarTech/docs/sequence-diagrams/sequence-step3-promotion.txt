@@ -1,4 +1,4 @@
-title: Step 3 (Optional) — Create Promotion
+title: Step 3 (Optional) - Create Promotion
 
 Web UI -> API Handler: User requests promotion
 API Handler -> Marketing Agent: Invoke via AgentCore Runtime

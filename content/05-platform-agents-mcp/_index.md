@@ -86,7 +86,7 @@ The agent's system prompt instructs it to:
 ### Draft-First Workflow
 
 1. Gather required info: name, channel, content, and `user_property_filters`
-2. Always `create_draft_campaign` first — never send without a draft
+2. Always `create_draft_campaign` first - never send without a draft
 3. Present estimated reach and ask for confirmation
 4. If confirmed → `confirm_draft_campaign`; if changes needed → `update_draft_campaign`
 5. If cancelled → `discard_draft_campaign`
@@ -134,10 +134,10 @@ All agents share common Python utilities in `packages/agents/common/common/`:
 
 | Module | Purpose |
 |--------|---------|
-| `a2a_server.py` | `create_a2a_app()` factory — wraps a Strands Agent in an A2A Server with FastAPI |
-| `gateway.py` | `get_gateway_mcp_client(target_name)` — creates SigV4-authenticated MCP client with tool prefix filtering |
-| `config.py` | `load_configuration()` — reads agent config (modelId, systemPrompt) from SSM Parameter Store |
-| `s3_artifact.py` | `S3ArtifactHook` — writes conversation messages to S3 for audit |
+| `a2a_server.py` | `create_a2a_app()` factory - wraps a Strands Agent in an A2A Server with FastAPI |
+| `gateway.py` | `get_gateway_mcp_client(target_name)` - creates SigV4-authenticated MCP client with tool prefix filtering |
+| `config.py` | `load_configuration()` - reads agent config (modelId, systemPrompt) from SSM Parameter Store |
+| `s3_artifact.py` | `S3ArtifactHook` - writes conversation messages to S3 for audit |
 
 {{% notice tip %}}
 The Marketing Agent uses a custom FastAPI server with a `/invocations` endpoint (required by AgentCore Runtime) instead of the shared `create_a2a_app` factory, because it acts as the orchestrator rather than a worker.

@@ -10,9 +10,9 @@ pre: " <b> 1. </b> "
 
 To launch a single marketing campaign, a marketer must coordinate across three disconnected platforms:
 
-- **Databricks** — query audience segments, run SQL against data warehouses, discover schemas and tables in Unity Catalog
-- **CleverTap** — manage campaign lifecycle: create drafts, validate targeting, confirm delivery across push, email, SMS, WhatsApp, web push, and webhook channels
-- **TalonOne** — configure promotions, coupons, loyalty programs, customer sessions, and manage discount campaigns
+- **Databricks** - query audience segments, run SQL against data warehouses, discover schemas and tables in Unity Catalog
+- **CleverTap** - manage campaign lifecycle: create drafts, validate targeting, confirm delivery across push, email, SMS, WhatsApp, web push, and webhook channels
+- **TalonOne** - configure promotions, coupons, loyalty programs, customer sessions, and manage discount campaigns
 
 Each platform requires separate credentials, different API contracts, and domain-specific expertise. The marketer spends more time context-switching between tools than designing effective campaigns.
 
@@ -46,10 +46,10 @@ By the end of this workshop, you'll understand:
 
 ## AWS AgentCore: The Foundation
 
-The entire system runs on **AWS AgentCore** — a managed service purpose-built for deploying and operating AI agents at scale. It provides three core capabilities:
+The entire system runs on **AWS AgentCore** - a managed service purpose-built for deploying and operating AI agents at scale. It provides three core capabilities:
 
 | Service | Role in This Platform |
 |---------|----------------------|
 | **AgentCore Runtime** | Hosts all 4 agents as Docker containers with automatic scaling, SigV4 authentication, and built-in observability |
 | **AgentCore Memory** | Persists conversation context across messages, enabling the Marketing Agent to recall prior decisions in long-running campaigns |
-| **AgentCore MCP Gateway** | Routes tool calls from agents to 3 Lambda-based MCP servers with IAM authentication — decoupling agent logic from infrastructure |
+| **AgentCore MCP Gateway** | Routes tool calls from agents to 3 Lambda-based MCP servers with IAM authentication - decoupling agent logic from infrastructure |

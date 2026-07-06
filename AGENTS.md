@@ -1,4 +1,4 @@
-# AGENTS.md — Hugo Documentation Site Authoring Workflow
+# AGENTS.md - Hugo Documentation Site Authoring Workflow
 
 ## Project Overview
 
@@ -8,7 +8,7 @@ Bilingual (English + Vietnamese) Hugo documentation site using the [hugo-theme-l
 - **Theme:** `hugo-theme-learn` (Git submodule at `themes/hugo-theme-learn`)
 - **Theme variant:** `workshop` (dark-blue AWS styling from `static/css/theme-workshop.css`)
 - **Config:** `config/_default/hugo.toml` (production), `config/development/hugo.toml` (local)
-- **CI/CD:** `.github/workflows/hugo.yml` — builds and deploys to GitHub Pages on push to `main`
+- **CI/CD:** `.github/workflows/hugo.yml` - builds and deploys to GitHub Pages on push to `main`
 
 ---
 
@@ -110,21 +110,21 @@ Always prefer these shortcodes over raw HTML for consistent styling:
 
 | Shortcode | Usage |
 |-----------|-------|
-| `children` | `{{% children description="true" /%}}` — list child pages with descriptions |
-| `notice` | `{{% notice info %}}Text{{% /notice %}}` — info/warning/error/tip callout boxes |
-| `expand` | `{{% expand "Title" %}}Content{{% /expand %}}` — collapsible sections |
-| `button` | `{{< button href="/path" >}}Label{{< /button >}}` — styled link button |
-| `mermaid` | `{{< mermaid >}}graph LR; A-->B;{{< /mermaid >}}` — Mermaid diagrams |
-| `tabs` / `tab` | `{{< tabs >}}{{< tab name="Tab1" >}}Content{{< /tab >}}{{< /tabs >}}` — tabbed content |
-| `attachments` | `{{% attachments /%}}` — list file attachments in page bundle |
-| `ref` | `{{< ref "path/to/page" >}}` — link to another Hugo page by source path |
-| `ghcontributors` | `{{< ghcontributors "repo-url" >}}` — GitHub contributor list |
+| `children` | `{{% children description="true" /%}}` - list child pages with descriptions |
+| `notice` | `{{% notice info %}}Text{{% /notice %}}` - info/warning/error/tip callout boxes |
+| `expand` | `{{% expand "Title" %}}Content{{% /expand %}}` - collapsible sections |
+| `button` | `{{< button href="/path" >}}Label{{< /button >}}` - styled link button |
+| `mermaid` | `{{< mermaid >}}graph LR; A-->B;{{< /mermaid >}}` - Mermaid diagrams |
+| `tabs` / `tab` | `{{< tabs >}}{{< tab name="Tab1" >}}Content{{< /tab >}}{{< /tabs >}}` - tabbed content |
+| `attachments` | `{{% attachments /%}}` - list file attachments in page bundle |
+| `ref` | `{{< ref "path/to/page" >}}` - link to another Hugo page by source path |
+| `ghcontributors` | `{{< ghcontributors "repo-url" >}}` - GitHub contributor list |
 
 ### 6. Image and Diagram Authoring
 
 The devcontainer includes these tools. Use them when creating visuals:
 
-- **Mermaid diagrams:** Use the `{{< mermaid >}}` shortcode — NEVER use fenced code blocks (` ```mermaid `). Hugo's Goldmark renderer treats fenced code blocks as `<pre><code>`, which renders as raw text. Only the `{{< mermaid >}}` shortcode produces `<div class="mermaid">` that triggers the Mermaid JS library client-side rendering.
+- **Mermaid diagrams:** Use the `{{< mermaid >}}` shortcode - NEVER use fenced code blocks (` ```mermaid `). Hugo's Goldmark renderer treats fenced code blocks as `<pre><code>`, which renders as raw text. Only the `{{< mermaid >}}` shortcode produces `<div class="mermaid">` that triggers the Mermaid JS library client-side rendering.
 - **Python diagrams:** `diagrams` library for AWS architecture diagrams. Generate with `python generate_diagram.py` in devcontainer, output PNG/SVG to `_static/`
 - **Screenshots:** Capture with whatever tool; optimize with `optipng` or `pngquant` before committing
 - **SVG is preferred** for diagrams (scalable, smaller size); PNG for screenshots only
@@ -151,7 +151,7 @@ docs: update authoring guidelines
 - [ ] All image paths are relative (`_static/...`) not root-relative (`/images/...`)
 - [ ] `hugo serve` runs without errors and page renders correctly in both languages
 - [ ] Images optimized (PNGs through `optipng`/`pngquant`, SVGs cleaned)
-- [ ] No broken internal links — use `hugo` shortcode `{{< ref >}}` for internal links, never hardcode URLs
+- [ ] No broken internal links - use `hugo` shortcode `{{< ref >}}` for internal links, never hardcode URLs
 - [ ] Section `pre` prefixes are consistent across language pairs
 
 ### PR Requirements
@@ -199,7 +199,7 @@ hugo --gc --minify --baseURL "/"
 
 When modifying layouts, partials, or shortcodes:
 
-1. **Do not modify files in `themes/hugo-theme-learn/`** — create overrides in `layouts/` instead
+1. **Do not modify files in `themes/hugo-theme-learn/`** - create overrides in `layouts/` instead
 2. Follow Hugo's lookup order: `layouts/` overrides `themes/hugo-theme-learn/layouts/`
 3. Match the directory structure exactly (e.g., override `themes/.../layouts/_default/list.html` at `layouts/_default/list.html`)
 4. Always provide both English-language fallbacks in template logic for any localized UI strings

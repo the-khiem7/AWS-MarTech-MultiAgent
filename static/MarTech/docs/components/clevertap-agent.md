@@ -25,9 +25,9 @@ Uses the shared `create_a2a_app()` factory from [`common.a2a_server`](../../pack
 
 The `get_clevertap_agent()` function creates a Strands Agent with:
 
-- **MCP Gateway client** — connects to the `clevertap-target` on the AgentCore Gateway using SigV4-authenticated streamable HTTP.
-- **Built-in tools** — `current_time` from `strands_tools`.
-- **Dynamic configuration** — loads model ID and system prompt from SSM Parameter Store.
+- **MCP Gateway client** - connects to the `clevertap-target` on the AgentCore Gateway using SigV4-authenticated streamable HTTP.
+- **Built-in tools** - `current_time` from `strands_tools`.
+- **Dynamic configuration** - loads model ID and system prompt from SSM Parameter Store.
 
 ## Available Tools
 
@@ -51,13 +51,13 @@ The agent supports the following `target_mode` values: `push`, `email`, `sms`, `
 The agent enforces a draft-first workflow:
 
 1. Gather required info: name, channel (`target_mode`), content, and audience (`user_property_filters`).
-2. Always use `create_draft_campaign` first — never send without creating a draft.
+2. Always use `create_draft_campaign` first - never send without creating a draft.
 3. Present estimated reach and ask for confirmation.
 4. If confirmed, use `confirm_draft_campaign`. If changes needed, use `update_draft_campaign`.
 5. If cancelled, use `discard_draft_campaign` to clean up.
 
 ## Environment Variables
 
-- `GATEWAY_URL` — AgentCore MCP Gateway URL
-- `AGENT_CONFIG_PARAMETER` — SSM parameter name for agent configuration
-- `AWS_REGION` — AWS region
+- `GATEWAY_URL` - AgentCore MCP Gateway URL
+- `AGENT_CONFIG_PARAMETER` - SSM parameter name for agent configuration
+- `AWS_REGION` - AWS region
